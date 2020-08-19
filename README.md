@@ -1,2 +1,7 @@
-# IT-Systems-Site
-An intrasite that will be used to send to employees in the workplace to be able to check on systems in case they are experiancing issues.
+# IT Systems Site
+---
+An internal site to be used in junction with the AGIT ticketing system
+
+# Goal
+---
+The goal of this site is to give the employees something to look at to try and understand somethings when the systems seem to be going down.
