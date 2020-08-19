@@ -7,3 +7,19 @@ nav ul li {
     position: sticky;
     left: 1320px;
 }
+
+#bottom-of-page {
+    text-align: right;
+    margin-right: 20px;
+}
+
+#home-link img {
+    max-width: 30px;
+    width: auto;
+    border: black 3px solid;
+    border-radius: 25%;
+}
+
+nav ul li a {
+    font-size: 1.5rem;
+}

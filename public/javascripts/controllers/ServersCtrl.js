@@ -1,4 +1,4 @@
-angular.module('MainCtrl', []).controller('MainController', function($scope) {
+angular.module('ServersCtrl', []).controller('ServersController', function($scope) {
     $scope.servers = [
         {
             name: 'Mas-90',

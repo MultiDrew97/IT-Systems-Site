@@ -3,8 +3,12 @@ angular.module('appRoutes', [])
         $routeProvider
             // home page
             .when('/', {
-                templateUrl: 'views/home.html',
-                controller: 'MainController'
+                templateUrl: 'views/home.html'
+            })
+
+            .when('/servers', {
+                templateUrl: 'views/servers.html',
+                controller: 'ServersController'
             })
 
             // Not Found 404 error page
