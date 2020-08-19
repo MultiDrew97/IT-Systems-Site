@@ -1,47 +1,48 @@
 <!DOCTYPE HTML>
 <html lang="en" ng-app="IT-Systems">
-<head>
-  <meta charset="UTF-8">
-  <base href="/"/>
-  <title>Bookworm Reviews</title>
+  <head>
+    <meta charset="UTF-8">
+    <base href="/"/>
+    <title>Bookworm Reviews</title>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="./libs/bootstrap/dist/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="./stylesheets/index.css" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="./libs/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./stylesheets/index.css" />
 
-  <!-- JS -->
-  <script src="./libs/angular/angular.min.js"></script>
-  <script src="./libs/angular-route/angular-route.min.js"></script>
+    <!-- JS -->
+    <script src="./libs/angular/angular.min.js"></script>
+    <script src="./libs/angular-route/angular-route.min.js"></script>
 
-  <!-- ANGULAR CUSTOM -->
-  <script src="./javascripts/controllers/MainCtrl.js"></script>
-  <script src="./javascripts/appRoutes.js"></script>
-  <script src="./javascripts/app.js"></script>
-</head>
+    <!-- ANGULAR CUSTOM -->
+    <script src="./javascripts/controllers/MainCtrl.js"></script>
+    <script src="./javascripts/appRoutes.js"></script>
+    <script src="./javascripts/app.js"></script>
+  </head>
 
-<body ng-app="IT-Systems">
-<header class="main-header" id="top">
-  <nav>
-    <ul>
-      <li><a ng-href="/servers" id="server" class="nav-link">Servers</a></li>
-      <li><a ng-href="/sites" id="sites" class="nav-link">Sites</a></li>
-      <li><a ng-href="/ticket" id="ticket" class="nav-link">Submit a Ticket</a></li>
-    </ul>
-  </nav>
-</header>
+  <body ng-app="IT-Systems">
+    <header class="main-header" id="top">
+      <nav>
+        <ul>
+          <li><a ng-href="/servers" id="server" class="nav-link">Servers</a></li>
+          <li><a ng-href="/sites" id="sites" class="nav-link">Sites</a></li>
+          <li><a ng-href="/contact" id="contact" class="nav-link">Contact Us</a></li>
+          <!--<li><a href="mailto:agit@austingastro.com?body=Location:%0d%0aPhone%20Number:%0d%0aIT#%20of%20computer(s):%0d%0aContents%20of%20error%20message(s):" id="ticket" class="nav-link">Submit a Ticket</a></li>-->
+          <li class="login-link"><a ng-href="/login" id="login" class="nav-link">Login</a></li>
+        </ul>
+      </nav>
+    </header>
 
-<!-- ANGULAR DYNAMIC PORTION -->
-<!-- TODO: I'm not to confident in how this works for webpages. I'll have to mess around
-        with it more to get a better understanding of how exactly it works -->
-<div class="dynamic">
-  <!-- This allows the page to be dynamically displayed using angular libraries -->
-  <ng-view/>
-</div>
+    <!-- ANGULAR DYNAMIC PORTION -->
+    <!-- TODO: I'm not to confident in how this works for webpages. I'll have to mess around
+            with it more to get a better understanding of how exactly it works -->
+    <div class="dynamic">
+      <!-- This allows the page to be dynamically displayed using angular libraries -->
+      <ng-view/>
+    </div>
 
-<footer id="bottom-of-page">
-  <p><small>&copy;2020 Book Worm's Reviews</small></p>
-  <p><small>Icons made by <a href="https://www.flaticon.com/authors/dave-gandy" title="Dave Gandy">Dave Gandy</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></small></p>
-  <a href="#top" id="topLink">Back to Top</a>
-</footer>
-</body>
+    <footer id="bottom-of-page">
+      <p><small>&copy;2020 IT Systems</small></p>
+      <a href="#top" id="topLink">Back to Top</a>
+    </footer>
+  </body>
 </html>

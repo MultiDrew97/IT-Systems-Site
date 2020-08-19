@@ -1,1 +1,1 @@
-angular.module('IT-Systems', ['MainCtrl']);
+angular.module('IT-Systems', ['ngRoute', 'appRoutes', 'MainCtrl']);

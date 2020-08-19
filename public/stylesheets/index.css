@@ -1,3 +1,9 @@
-nav {
+nav ul li {
     display: inline-block;
+    position: sticky;
+}
+
+.login-link {
+    position: sticky;
+    left: 1320px;
 }

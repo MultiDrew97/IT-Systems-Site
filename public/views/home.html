@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="IT-Systems">
     <head>
         <meta charset="UTF-8">
-        <title>Title</title>
-    </head>
-    <body>
+        <title>IT Systems</title>
 
+        <link rel="stylesheet" href="../stylesheets/home.css">
+    </head>
+    <body ng-controller="MainController">
+        <table id="server-table">
+            <thead>
+                <tr>
+                    <td>Server Name</td>
+                    <td>Current Status</td>
+                </tr>
+            </thead>
+            <tr ng-repeat="server in servers">
+                <td> {{ server.name }} </td>
+                <td class="status"> <p class="status-light {{ server.status }}"></p></td>
+            </tr>
+        </table>
     </body>
 </html>
