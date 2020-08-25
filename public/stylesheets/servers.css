@@ -1,11 +1,7 @@
 #server-table {
     position: sticky;
     left: 35%;
-    top: 1000px;
-}
-
-.dynamic {
-    margin: 0 35%;
+    top: 10%;
 }
 
 thead {
@@ -21,12 +17,8 @@ thead tr td {
     border-radius: 50%;
     width: 25px;
     height: 25px;
-    max-width: 30px;
-    max-height: 30px;
-}
-
-.status {
-    padding: 0 23%;
+    margin: 5% 45%;
+    background-color: greenyellow;
 }
 
 .up, .Up, .UP{
@@ -39,4 +31,13 @@ thead tr td {
 
 .down, .Down, .DOWN {
     background: red;
+}
+
+table, td {
+    border: black 1px solid;
+}
+
+.server-name {
+    text-align: right;
+    padding-right: 4%;
 }

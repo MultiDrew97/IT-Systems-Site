@@ -1,9 +1,11 @@
-nav ul li {
-    display: inline-block;
+nav {
+    display: flex;
     position: sticky;
+    font-size: 1.5rem;
+    margin-left: 1%;
 }
 
-.login-link {
+#login-link {
     position: sticky;
     left: 1320px;
 }
@@ -18,8 +20,5 @@ nav ul li {
     width: auto;
     border: black 3px solid;
     border-radius: 25%;
-}
-
-nav ul li a {
-    font-size: 1.5rem;
+    margin-top: 33%;
 }

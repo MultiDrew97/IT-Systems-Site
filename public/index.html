@@ -22,14 +22,12 @@
   <body ng-app="IT-Systems">
     <header class="main-header" id="top">
       <nav>
-        <ul>
-          <li><a ng-href="/" id="home-link"><img src="./images/home_logo.png" alt="Bookworm Reviews"/></a></li>
-          <li><a ng-href="/servers" id="server" class="nav-link">Servers</a></li>
-          <li><a ng-href="/sites" id="sites" class="nav-link">Sites</a></li>
-          <li><a ng-href="/contact" id="contact" class="nav-link">Contact Us</a></li>
-          <!--<li><a href="mailto:agit@austingastro.com?body=Location:%0d%0aPhone%20Number:%0d%0aIT#%20of%20computer(s):%0d%0aContents%20of%20error%20message(s):" id="ticket" class="nav-link">Submit a Ticket</a></li>-->
-          <li class="login-link"><a ng-href="/login" id="login" class="nav-link">Login</a></li>
-        </ul>
+        <a ng-href="/" id="home-link"><img src="./images/home_logo.png" alt="Bookworm Reviews"/></a>
+        <a ng-href="/servers" id="server" class="nav-link">Servers</a>
+        <a ng-href="/sites" id="sites" class="nav-link">Sites</a>
+        <a ng-href="/contact" id="contact" class="nav-link">Contact Us</a>
+        <!--<li><a href="mailto:agit@austingastro.com?body=Location:%0d%0aPhone%20Number:%0d%0aIT#%20of%20computer(s):%0d%0aContents%20of%20error%20message(s):" id="ticket" class="nav-link">Submit a Ticket</a></li>-->
+        <a ng-href="/login" id="login-link" class="nav-link">Login</a>
       </nav>
     </header>
 
@@ -41,7 +39,7 @@
       <ng-view/>
     </div>
 
-    <section>
+    <section id="help-statement">
       <p>Systems checking out and still having issues? <a ng-href="/contact">Contact Us</a></p>
     </section>
 
