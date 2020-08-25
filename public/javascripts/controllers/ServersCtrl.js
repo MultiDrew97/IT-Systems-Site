@@ -12,7 +12,7 @@ angular.module('ServersCtrl', []).controller('ServersController', function($scop
     xhttp.send();
 
     $scope.$on('$viewContentLoaded', function() {
-        let tableBody = document.getElementById('server-info')
+        let tableBody = document.getElementById('servers')
 
         setTimeout(function() {
             const statusClass = 'status-light ';
@@ -56,7 +56,7 @@ angular.module('ServersCtrl', []).controller('ServersController', function($scop
                     }
                 }
             }, 500)
-        }, 1000)
+        }, 100)
     });
 
     $scope.ping = function(server) {
