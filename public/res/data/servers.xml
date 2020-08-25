@@ -1,0 +1,22 @@
+<Servers>
+    <Server>
+        <ServerName>Master Gastro</ServerName>
+        <IpAddress>192.168.7.10</IpAddress>
+        <ServerStatus>Up</ServerStatus>
+    </Server>
+    <Server>
+        <ServerName>Mas 90</ServerName>
+        <IpAddress>10.1.0.90</IpAddress>
+        <ServerStatus>Up</ServerStatus>
+    </Server>
+    <Server>
+        <ServerName>Data/Share Drive</ServerName>
+        <IpAddress>192.168.7.8</IpAddress>
+        <ServerStatus>Up</ServerStatus>
+    </Server>
+    <Server>
+        <ServerName>Test Server</ServerName>
+        <IpAddress>10.1.0.91</IpAddress>
+        <ServerStatus>Up</ServerStatus>
+    </Server>
+</Servers>
