@@ -57,7 +57,7 @@ angular.module('ServersCtrl', []).controller('ServersController', function($scop
                     console.debug("DEBUG: PINGING SERVERS");
                     for (let server in $scope.servers) {
                         console.debug(`DEBUG: PINGING ${$scope.servers[server].name}`)
-                        $pingServ.ping($scope.servers[server]);
+                        $ping.ping($scope.servers[server]);
                     }
                 }
             }, 500)

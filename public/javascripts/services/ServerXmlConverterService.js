@@ -13,7 +13,7 @@ angular.module('SXCServ', []).service('$serverXmlConvert', function() {
             server.name = server_list[i].getElementsByTagName('ServerName')[0].childNodes[0].nodeValue;
             server.ipAddress = server_list[i].getElementsByTagName('IpAddress')[0].childNodes[0].nodeValue;
             server.status = server_list[i].getElementsByTagName('ServerStatus')[0].childNodes[0].nodeValue;
-            server.dns = server_list[i].getElementsByTagname('DNSName')[0].childNodes[0].nodeValue;
+            server.dns = server_list[i].getElementsByTagName('DNSName')[0].childNodes[0].nodeValue;
 
             // append the new server into the array of servers
             servers.push(server);
