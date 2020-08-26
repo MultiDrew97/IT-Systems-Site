@@ -11,6 +11,11 @@ angular.module('appRoutes', [])
                 controller: 'ServersController'
             })
 
+            .when('/login', {
+                templateUrl: 'views/login.html',
+                controller: 'LoginController'
+            })
+
             // Not Found 404 error page
             .otherwise({
                 redirectTo: '/'

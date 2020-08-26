@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="IT-Systems">
+    <head>
+        <meta charset="UTF-8">
+        <title>IT Systems</title>
+
+        <link rel="stylesheet" href="../stylesheets/login.css">
+    </head>
+    <body ng-controller="LoginController">
+        <form id="login-form">
+            <div class="container">
+                <label for="username" class="inputLabel"><strong>Username:</strong></label>
+                <input ng-model="username" placeholder="Username" type="text" id="username" required tabindex="0" />
+
+                <label for="password" class="inputLabel"><strong>Password:</strong></label>
+                <input ng-model="password" placeholder="Password" type="password" id="password" required/>
+
+                <div class="signinchk">
+                    <label >
+                        <input ng-model="keepSignedIn" type="checkbox" id="keepSignedIn" /> Remember Password
+                    </label>
+                </div>
+
+                <input type="button" id="submit" name="Submit" value="Login" ng-click="signIn()" />
+            </div>
+        </form>
+
+        <!--TODO: Figure out how to make a popup to handle forgotten passwords and even the sign-in window-->
+        <div class="container">
+            <small><p id="forgot-password"><a ng-href="/login/reset">Forgot my password</a></p></small>
+        </div>
+    </body>
+</html>

@@ -1,5 +1,7 @@
-let app = angular.module('IT-Systems', ['ngRoute', 'appRoutes', 'ServersCtrl']);
+let app = angular.module('IT-Systems',
+    ['ngRoute', 'appRoutes', 'ServersCtrl', 'LoginCtrl', 'SXCServ', 'PingServ']);
 
+/*
 app.service('$serverXmlConvert', function() {
     this.convertXML = function(server_list) {
         let servers = [];
@@ -18,4 +20,4 @@ app.service('$serverXmlConvert', function() {
 
         return servers;
     }
-})
+})*/

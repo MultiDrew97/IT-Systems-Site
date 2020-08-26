@@ -1,0 +1,72 @@
+body {
+    font-family: Ariel, Helvetica, sans-serif;
+}
+
+#forgot-password {
+    text-align: center;
+}
+
+#forgot-password a:hover {
+    /*text-decoration: none;*/
+}
+
+#login-form {
+    border: 2px solid #f1f1f1;
+    margin: 4% 10% 0 10%;
+}
+
+#username, #password {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc
+}
+
+#submit {
+    background-color: limegreen;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+    font-max-size: 3rem;
+    color: white;
+    padding: 10px 0px;
+}
+
+.keepSignedIn {
+    text-align: center;
+}
+
+#submit:hover {
+    opacity: 0.8;
+}
+
+.inputLabel {
+    margin-top: 10px;
+}
+
+.container {
+    padding: 16px;
+}
+
+.signinchk {
+    text-align: center;
+}
+
+#login-link {
+    display: none;
+}
+/*.entry {
+    padding-left: 25%;
+}
+
+.bottom-entries {
+    padding-top: 3%;
+}
+
+#keepSignedIn {
+    height: 20px;
+    width: 20px;
+}*/
