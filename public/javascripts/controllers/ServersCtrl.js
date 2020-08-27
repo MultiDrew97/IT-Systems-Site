@@ -2,19 +2,18 @@
     A service used to convert XML data for server information into JSON format and vise versa.
 */
 
-angular.module('ServersCtrl', []).controller('ServersController', function($scope, $serverXmlConvert, $ping) {
-
+angular.module('ServersCtrl', []).controller('ServersController', function($scope, $xmlConvert, $ping) {
     let xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
         if (xhttp.readyState === 4 && (xhttp.status === 200 || xhttp.status === 304)) {
-            $scope.servers = $serverXmlConvert.convertXML(xhttp.responseXML.getElementsByTagName('Server')); // import xml data
-            console.log($scope.servers);
+            $scope.servers = $xmlConvert.convertServerXML(xhttp.responseXML.getElementsByTagName('Server')); // import xml data
         }
     }
 
     xhttp.open('GET', '../../res/data/servers.xml', true);
     xhttp.send();
+
 
     $scope.$on('$viewContentLoaded', function() {
         let tableBody = document.getElementById('servers')

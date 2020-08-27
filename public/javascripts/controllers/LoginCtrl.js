@@ -1,24 +1,38 @@
-angular.module('LoginCtrl', []).controller('LoginController', function($scope) {
+angular.module('LoginCtrl', []).controller('LoginController', function($scope, $login) {
+    // this allows the login button to be 'clicked' when the enter button is pressed
+    document.querySelector('#login-form').addEventListener('keyup', event => {
+        if (event.key !== "Enter") return; //checks if the button pressed was not the enter button
+        document.querySelector('#login').click(); // perform the button click when the button is confirmed to be the enter button
+        event.preventDefault(); // keeps from pressing other buttons on the page
+    });
+
     $scope.keepSignedIn = false;
+    $login.loadCredentials();
 
     $scope.signIn = function() {
-        if ($scope.keepSignedIn) {
-            setCookie('username', $scope.username, 60);
-            setCookie('password', btoa(btoa($scope.password)), 60);
+        if($login.checkLogin($scope.username, $scope.password)) {
+            alert('Login Successful');
 
-            console.debug(`DEBUG: ${document.cookie}`);
+            if ($scope.keepSignedIn) {
+                setCookie('username', $scope.username, 14);
+                setCookie('password', btoa(btoa($scope.password)), 14);
+
+                console.debug(`DEBUG: ${document.cookie}`);
+            }
+
+            console.debug(`DEBUG: Keep Signed In - ${$scope.keepSignedIn}`);
+        } else {
+            document.querySelector('#password').innerText = "";
         }
-
-        console.debug(`DEBUG: Keep Signed In - ${$scope.keepSignedIn}`);
     }
 
     function setCookie(cname, cvalue, exdays) {
         /*
             Sets the values of the cookie with the determined lifespan
 
-            @param cname(String) Name of the value being stored for the cookie
-            @param cvalue(String) Value being stored in cookie
-            @param exdays(Number) Number of days the
+            @param cname Name of the value being stored for the cookie
+            @param cvalue Value being stored in cookie
+            @param exdays Number of days the
         */
         let d = new Date();
         d.setTime(d.getTime() + (exdays*24*60*60*1000));

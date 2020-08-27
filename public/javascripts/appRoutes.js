@@ -16,6 +16,10 @@ angular.module('appRoutes', [])
                 controller: 'LoginController'
             })
 
+            .when('/api/users/valid', {
+                controller: ''
+            })
+
             // Not Found 404 error page
             .otherwise({
                 redirectTo: '/'

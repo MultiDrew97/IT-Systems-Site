@@ -24,7 +24,7 @@ body {
     border: 1px solid #ccc
 }
 
-#submit {
+#login {
     background-color: limegreen;
     border: none;
     cursor: pointer;
@@ -57,6 +57,11 @@ body {
 
 #login-link {
     display: none;
+}
+
+#username, #password {
+    font-size: 2rem;
+    padding-left: 4%;
 }
 /*.entry {
     padding-left: 25%;
