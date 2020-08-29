@@ -23,6 +23,7 @@ angular.module('LoginCtrl', []).controller('LoginController', function($scope, $
             console.debug(`DEBUG: Keep Signed In - ${$scope.keepSignedIn}`);
         } else {
             document.querySelector('#password').innerText = "";
+            alert('Login Failed');
         }
     }
 

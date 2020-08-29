@@ -6,19 +6,21 @@ angular.module('appRoutes', [])
                 templateUrl: 'views/home.html'
             })
 
+            // servers page
             .when('/servers', {
                 templateUrl: 'views/servers.html',
                 controller: 'ServersController'
             })
 
+            // login page
             .when('/login', {
                 templateUrl: 'views/login.html',
                 controller: 'LoginController'
             })
 
-            .when('/api/users/valid', {
-                controller: ''
-            })
+            /*.when('/api/users', {
+                controller: 'UsersController'
+            })*/
 
             // Not Found 404 error page
             .otherwise({

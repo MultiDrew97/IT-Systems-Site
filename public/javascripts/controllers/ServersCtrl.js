@@ -11,7 +11,7 @@ angular.module('ServersCtrl', []).controller('ServersController', function($scop
         }
     }
 
-    xhttp.open('GET', '../../res/data/servers.xml', true);
+    xhttp.open('GET', '../../api/data/servers.xml', true);
     xhttp.send();
 
 

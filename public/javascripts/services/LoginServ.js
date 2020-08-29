@@ -1,13 +1,11 @@
 angular.module('LoginServ', []).service('$login', function($xmlConvert, $crypto, $http) {
-    const path = '../../res/data/login.xml';
+    const path = '../../api/data/login.xml';
     let users = [];
 
     this.loadCredentials = () => {
         /*
 
             Load the user credentials from the xml database file
-
-
 
          */
         let xhttp = new XMLHttpRequest();
@@ -32,7 +30,7 @@ angular.module('LoginServ', []).service('$login', function($xmlConvert, $crypto,
             @return Whether the credentials are valid
          */
         let userIndex = userExists(username);
-        if (userIndex >= 0) {
+        if (userIndex > -1) {
             console.log(btoa(btoa('password')));
             return $crypto.decode(users[userIndex].password) === password;
         }
@@ -66,7 +64,7 @@ angular.module('LoginServ', []).service('$login', function($xmlConvert, $crypto,
             @return Whether the user was successfully created
          */
         let user = {
-            displayName: displayname,
+            displayName: displayName,
             username: username,
             password: $crypto.encode(password)
         }
@@ -79,7 +77,7 @@ angular.module('LoginServ', []).service('$login', function($xmlConvert, $crypto,
             let xml;
 
             xhttp.onreadystatechange = () => {
-                if (this.readystate === 4 && (this.status === 200 || this.status === 304)) {
+                if (this.readyState === 4 && (this.status === 200 || this.status === 304)) {
                     xml = this.responseXML;
                 }
             }

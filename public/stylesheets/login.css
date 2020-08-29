@@ -12,7 +12,8 @@ body {
 
 #login-form {
     border: 2px solid #f1f1f1;
-    margin: 4% 10% 0 10%;
+    margin: 4% 10% 0 25%;
+    max-width: 700px
 }
 
 #username, #password {
@@ -48,10 +49,11 @@ body {
 }
 
 .container {
-    padding: 16px;
+    padding: 16px 0px 23px 0px;
+    max-width: 500px;
 }
 
-.signinchk {
+.rememberMe {
     text-align: center;
 }
 
