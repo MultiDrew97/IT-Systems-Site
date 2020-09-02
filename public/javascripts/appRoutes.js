@@ -18,9 +18,10 @@ angular.module('appRoutes', [])
                 controller: 'LoginController'
             })
 
-            /*.when('/api/users', {
-                controller: 'UsersController'
-            })*/
+            .when('/servers/manage', {
+                templateUrl: 'views/manage.html'/*,
+                controller: 'ManageController'*/
+            })
 
             // Not Found 404 error page
             .otherwise({

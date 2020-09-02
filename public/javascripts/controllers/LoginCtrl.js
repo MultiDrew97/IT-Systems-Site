@@ -1,4 +1,4 @@
-angular.module('LoginCtrl', []).controller('LoginController', function($scope, $login) {
+angular.module('LoginCtrl', []).controller('LoginController', function($scope, $location, $login, $crypto, $env) {
     // this allows the login button to be 'clicked' when the enter button is pressed
     document.querySelector('#login-form').addEventListener('keyup', event => {
         if (event.key !== "Enter") return; //checks if the button pressed was not the enter button
@@ -6,25 +6,36 @@ angular.module('LoginCtrl', []).controller('LoginController', function($scope, $
         event.preventDefault(); // keeps from pressing other buttons on the page
     });
 
+    $scope.$on('$viewContentLoaded', function() {
+        /*console.debug(document.querySelector('#keepSignedIn').value);*/
+        document.querySelector('#username').focus();
+    });
+
     $scope.keepSignedIn = false;
-    $login.loadCredentials();
 
     $scope.signIn = function() {
-        if($login.checkLogin($scope.username, $scope.password)) {
-            alert('Login Successful');
+        const loginEncoded = $crypto.encode(`${$scope.username}:${$scope.password}`);
+        /*const apiEncoded = $crypto.encode(`${$env.apiAuth.username}:${$env.apiAuth.password}`);*/
 
-            if ($scope.keepSignedIn) {
-                setCookie('username', $scope.username, 14);
-                setCookie('password', btoa(btoa($scope.password)), 14);
+        $login.checkLogin(loginEncoded).then(succ => {
+            if (succ.data.valid) {
+                alert('Login Successful');
 
-                console.debug(`DEBUG: ${document.cookie}`);
+                if ($scope.keepSignedIn) {
+                    setCookie('credentials', loginEncoded, 14);
+
+                    console.debug(`DEBUG: ${document.cookie}`);
+                }
+
+                $location.path('/servers/manage');
+            } else {
+                document.querySelector('#password').value = "";
+                alert('Login Failed');
             }
+        }, err => {
+            alert(err);
+        });
 
-            console.debug(`DEBUG: Keep Signed In - ${$scope.keepSignedIn}`);
-        } else {
-            document.querySelector('#password').innerText = "";
-            alert('Login Failed');
-        }
     }
 
     function setCookie(cname, cvalue, exdays) {
@@ -67,7 +78,9 @@ angular.module('LoginCtrl', []).controller('LoginController', function($scope, $
     }
 
     function checkCookie() {
-        let username = getCookie('username');
+        let credentials = getCookie('credentials');
+        let username = $crypto.decode(credentials).split(':')[0];
+        let password = $crypto.decode(credentials).split(':')[1];
         if (username != '') {
             alert(`welcome again ${username}`);
         } else {

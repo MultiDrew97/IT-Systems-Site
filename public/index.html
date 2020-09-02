@@ -14,13 +14,15 @@
     <script src="./libs/angular-route/angular-route.min.js"></script>
 
     <!-- ANGULAR CUSTOM -->
+    <script src="./javascripts/controllers/MainCtrl.js"></script>
     <script src="./javascripts/controllers/ServersCtrl.js"></script>
     <script src="./javascripts/controllers/LoginCtrl.js"></script>
     <script src="./javascripts/controllers/UsersCtrl.js"></script>
-    <script src="api/utils/convert.js"></script>
+    <script src="./javascripts/controllers/ManageCtrl.js"></script>
     <script src="./javascripts/services/PingServ.js"></script>
     <script src="./javascripts/services/LoginServ.js"></script>
     <script src="./javascripts/services/CryptoServ.js"></script>
+    <script src="./javascripts/services/EnvSrv.js"></script>
     <script src="./javascripts/appRoutes.js"></script>
     <script src="./javascripts/app.js"></script>
   </head>
@@ -28,7 +30,7 @@
   <body ng-app="IT-Systems">
     <header class="main-header" id="top">
       <nav>
-        <a ng-href="/" id="home-link"><img src="./images/home_logo.png" alt="Bookworm Reviews"/></a>
+        <a ng-href="/" id="home-link"><img src="./images/home_logo.png" alt="IT Systems Site"/></a>
         <a ng-href="/servers" id="server" class="nav-link">Servers</a>
         <a ng-href="/sites" id="sites" class="nav-link">Sites</a>
         <a ng-href="/contact" id="contact" class="nav-link">Contact Us</a>

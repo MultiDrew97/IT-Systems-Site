@@ -11,7 +11,7 @@ angular.module('CryptoServ', []).service('$crypto', function() {
 
             @return Encrypted value
          */
-        return btoa(btoa(value));
+        return btoa(value);
     }
 
     this.decode = (value) => {
@@ -22,6 +22,6 @@ angular.module('CryptoServ', []).service('$crypto', function() {
 
             @return Decrypted value
          */
-        return atob(atob(value));
+        return atob(value);
     }
 })

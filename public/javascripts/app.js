@@ -1,2 +1,3 @@
 angular.module('IT-Systems',
-    ['ngRoute', 'appRoutes', 'ServersCtrl', 'LoginCtrl', 'UsersCtrl', 'PingServ', 'LoginServ', 'CryptoServ']);
+    ['ngRoute', 'appRoutes', 'ServersCtrl', 'LoginCtrl', 'UsersCtrl', 'ManageCtrl',
+        'PingServ', 'LoginServ', 'CryptoServ', 'EnvSrv']);

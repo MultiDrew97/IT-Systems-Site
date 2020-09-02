@@ -3,7 +3,7 @@
 */
 
 angular.module('ServersCtrl', []).controller('ServersController', function($scope, $xmlConvert, $ping) {
-    let xhttp = new XMLHttpRequest();
+    /*let xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
         if (xhttp.readyState === 4 && (xhttp.status === 200 || xhttp.status === 304)) {
@@ -12,7 +12,7 @@ angular.module('ServersCtrl', []).controller('ServersController', function($scop
     }
 
     xhttp.open('GET', '../../api/data/servers.xml', true);
-    xhttp.send();
+    xhttp.send();*/
 
 
     $scope.$on('$viewContentLoaded', function() {
