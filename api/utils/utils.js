@@ -1,12 +1,15 @@
 const env = require('../../bin/environment');
 const fs = require('fs');
+const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 const backup1 = './api/data/data_1.json';
 const backup2 = './api/data/data_2.json';
+
 utils = {
     users: [],
     servers: [],
     path: './api/data/data.json',
-    loadData: function(){
+    lastChecked: Date,
+    loadData: function () {
         /*
             Load the data from the data file and store them in the servers and users arrays
          */
@@ -14,9 +17,11 @@ utils = {
             const json = JSON.parse(data.toString());
             this.users = json.Users;
             this.servers = json.Servers;
+
+            this.checkServers();
         })
     },
-    checkAuth : function(username, password) {
+    checkAuth: function (username, password) {
         /*
             Check the validation of the credentials given for API authorization
 
@@ -33,7 +38,7 @@ utils = {
 
         return false;
     },
-    checkLogin: function(username, password) {
+    checkLogin: function (username, password) {
         /*
             Check the validation of the login credentials passed for the website itself
 
@@ -50,7 +55,7 @@ utils = {
 
         return false;
     },
-    saveData: function(res, statusCode = {good: 204, bad: 400}) {
+    saveData: function (res, unchanged = false, statusCode = {good: 204, bad: 400}) {
         /*
             Save the information to the data file
 
@@ -60,42 +65,52 @@ utils = {
 
         let temp = {Users: this.users, Servers: this.servers};
 
-        /*
+        if (unchanged) {
+            if (res === null) {
+                fs.writeFile(this.path, JSON.stringify(temp), (err) => {
+                    if (err) {
+                        console.log(err);
+                    }
+                });
+            }
+        } else {
+            /*
             Adds a "logging" feature to the saving of the data file. It will keep up to 2 backups of the data file,
             which will be created everytime the file is changed
 
             Currently untested in the fact of if it completely works as intended
-        fs.access(this.path, err => {
-            if (err)
-                return err;
-
-            fs.access(backup1, err => {
-                if (err) {
-                    //copy the contents of the main file to backup1
+            fs.access(this.path, err => {
+                if (err)
                     return err;
-                }
-                fs.copyFile(backup1, backup2, err => {
-                    //copy the contents of backup1 into backup2, then save the main file
-                    fs.writeFile(this.path, temp, err => {
-                        if (err)
-                            return err
+
+                fs.access(backup1, err => {
+                    if (err) {
+                        //copy the contents of the main file to backup1
+                        return err;
+                    }
+                    fs.copyFile(backup1, backup2, err => {
+                        //copy the contents of backup1 into backup2, then save the main file
+                        fs.writeFile(this.path, temp, err => {
+                            if (err)
+                                return err
+                        })
                     })
                 })
-            })
-        })*/
+            })*/
 
-        fs.writeFile(this.path, JSON.stringify(temp), (err) => {
-            if (err){
-                res.status(statusCode.bad);
-                res.send(err)
-                return
-            }
+            fs.writeFile(this.path, JSON.stringify(temp), (err) => {
+                if (err) {
+                    res.status(statusCode.bad);
+                    res.send(err)
+                    return
+                }
 
-            res.status(statusCode.good);
-            res.send();
-        });
+                res.status(statusCode.good);
+                res.send();
+            });
+        }
     },
-    findServer: function(ipAddress) {
+    findServer: function (ipAddress) {
         /*
             Locate the index of a server in the list by IP Address
 
@@ -111,7 +126,7 @@ utils = {
 
         return -1;
     },
-    addServer: function(newServer, res) {
+    addServer: function (newServer, res) {
         /*
             Add a server to the list
 
@@ -141,7 +156,7 @@ utils = {
         }
 
     },
-    uniqueServer: function(ipAddress) {
+    uniqueServer: function (ipAddress) {
         /*
             Check if the new server is already in the list or if the IP Address is already being used
 
@@ -159,7 +174,7 @@ utils = {
 
         return true;
     },
-    uniqueUsername: function(username) {
+    uniqueUsername: function (username) {
         /*
             Check if the new user is already in the list or if the username is already being used
 
@@ -176,7 +191,7 @@ utils = {
 
         return true;
     },
-    addUser: function(newUser, res) {
+    addUser: function (newUser, res) {
         /*
             Add a new user to the list and data file
 
@@ -196,7 +211,7 @@ utils = {
             res.send({unique: false});
         }
     },
-    findUser: function(username) {
+    findUser: function (username) {
         /*
             Locate the index of a user in the list by username
 
@@ -212,7 +227,7 @@ utils = {
 
         return -1;
     },
-    deleteUser: function(username, res) {
+    deleteUser: function (username, res) {
         /*
             Remove the user from the list and data file
 
@@ -231,7 +246,7 @@ utils = {
             res.send();
         }
     },
-    deleteServer: function(ipAddress, res) {
+    deleteServer: function (ipAddress, res) {
         /*
             Remove the server from the list and data file
 
@@ -251,7 +266,7 @@ utils = {
             res.send();
         }
     },
-    updateServer: function(ipAddress, newInfo, res) {
+    updateServer: function (ipAddress, newInfo, res) {
         /*
             Update the information for a specific server
 
@@ -269,7 +284,7 @@ utils = {
             res.send();
         }
     },
-    updateUser: function(username, newInfo, res) {
+    updateUser: function (username, newInfo, res) {
         /*
             Update the information for a specific server
 
@@ -286,7 +301,77 @@ utils = {
             res.status(400);
             res.send();
         }
+    },
+    ping: function (serverIndex) {
+        /*let MAX_ITERATIONS = 1;
+        let TIME_PERIOD = 1000;
+        let i = 0;*/
+        let REQUEST_TIMEOUT = 3000;
+        let TIMEOUT_ERROR = false;
+
+        let ping = new XMLHttpRequest();
+
+        /*i++;
+        ping.seq = i;*/
+
+        ping.date1 = Date.now();
+
+        ping.timeout = REQUEST_TIMEOUT;
+
+        ping.onreadystatechange = function () {
+            if (ping.readyState === 4 && !TIMEOUT_ERROR) {
+                utils.servers[serverIndex].status = 'up';
+            }
+        }
+
+        ping.ontimeout = function () {
+            TIMEOUT_ERROR = true;
+        }
+
+        ping.open('HEAD', `https://${this.servers[serverIndex].dnsName}`, true);
+        ping.send();
+
+        /*let ping_loop = setInterval(function () {
+
+            if (i < MAX_ITERATIONS) {
+                let ping = new XMLHttpRequest();
+
+                i++;
+                ping.seq = i;
+
+                ping.date1 = Date.now();
+
+                ping.timeout = REQUEST_TIMEOUT;
+
+                ping.onreadystatechange = function () {
+                    if (ping.readyState === 4 && !TIMEOUT_ERROR) {
+                        utils.servers[serverIndex].status = 'up';
+                    }
+                }
+
+                ping.ontimeout = function () {
+                    TIMEOUT_ERROR = true;
+                }
+
+                ping.open('HEAD', `https://${this.servers[serverIndex].dnsName}`, true);
+                ping.send();
+            }
+
+            if (TIMEOUT_ERROR) {
+                clearInterval(ping_loop);
+            }
+        }, TIME_PERIOD);*/
+    },
+    convertToMinutes: function(time) {
+        return time * 1000 * 60
+    },
+    checkServers: function() {
+        for (let i = 0; i < this.servers.length; i++) {
+            this.ping(i);
+        }
+
+        this.lastChecked = Date.now();
+        this.saveData(null, true);
     }
 }
-
 module.exports = utils;

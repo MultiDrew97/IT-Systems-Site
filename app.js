@@ -6,12 +6,33 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const jsBase64 = require('js-base64');
+const fs = require('fs');
 const utils = require('./api/utils/utils');
 
 /*const bodyParser = require('body-parser');*/
 
 let logger = require('morgan');
+const logStream = fs.createWriteStream(path.join(__dirname, 'logs/systems_api.log'), {flags: 'a'});
+let temp;
 
+try {
+    temp = fs.opendirSync(path.join(__dirname, 'logs'));
+    console.log('Directory already exists');
+} catch (ex) {
+    fs.mkdirSync(path.join(__dirname, 'logs'));
+    try {
+        temp = fs.opendirSync(path.join(__dirname, 'logs'));
+    } catch (ex) {
+        throw Error('Could not create the directory');
+    }
+} finally {
+    temp.closeSync();
+}
+
+/*try {
+    fs.accessSync(path.join(__dirname, 'logs/systems_api.log'));
+} catch (ex) {
+}*/
 
 /*
         App setup functions
@@ -22,7 +43,9 @@ let app = express();
 
     /*Only used for debugging purposes*/
 
-app.use(logger('dev'));
+app.use(logger('tiny', {
+    stream: logStream
+}));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -109,28 +132,6 @@ app.delete('/api/users', (req, res) => {
 
         if (utils.checkAuth(username, password)) {
             utils.deleteUser(req.query.username, res);
-        } else {
-            res.status(401);
-            res.send();
-        }
-    } else {
-        res.status(401);
-        res.send();
-    }
-})
-
-app.put('/api/users', (req, res) => {
-    /*
-        Modify a server's information in the list of servers being watched
-     */
-
-    if (req.headers.authorization) {
-        let auth = jsBase64.decode(req.headers.authorization.split(' ')[1]);
-        let username = auth.split(':')[0];
-        let password = auth.split(':')[1];
-
-        if (utils.checkAuth(username, password)) {
-            utils.updateUser(req.query.username, req.body, res);
         } else {
             res.status(401);
             res.send();
@@ -244,5 +245,27 @@ app.put('/api/servers', (req, res) => {
         res.send();
     }
 })
+
+app.get('/api/servers/checked', (req, res) => {
+    if (req.headers.authorization) {
+        let auth = jsBase64.decode(req.headers.authorization.split(' ')[1]);
+        let username = auth.split(':')[0];
+        let password = auth.split(':')[1];
+
+        if (utils.checkAuth(username, password)) {
+            res.json({date: utils.lastChecked});
+        } else {
+            res.status(401);
+            res.send();
+        }
+    } else {
+        res.status(401);
+        res.send();
+    }
+})
+
+setInterval(function() {
+    utils.checkServers()
+}, utils.convertToMinutes(2))
 
 module.exports = app;

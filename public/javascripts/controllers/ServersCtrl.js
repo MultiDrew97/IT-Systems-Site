@@ -1,35 +1,37 @@
-/*
-    A service used to convert XML data for server information into JSON format and vise versa.
-*/
+angular.module('ServersCtrl', []).controller('ServersController', function($scope, $server, $crypto, $cookies, $location, $route, checked, servers) {
+    $scope.lastChecked = checked.data.date || 'Has not been checked yet';
+    $scope.servers = servers.data;
 
-angular.module('ServersCtrl', []).controller('ServersController', function($scope, $xmlConvert, $ping) {
-    /*let xhttp = new XMLHttpRequest();
-
-    xhttp.onreadystatechange = function() {
-        if (xhttp.readyState === 4 && (xhttp.status === 200 || xhttp.status === 304)) {
-            $scope.servers = $xmlConvert.convertServerXML(xhttp.responseXML.getElementsByTagName('Server')); // import xml data
-        }
-    }
-
-    xhttp.open('GET', '../../api/data/servers.xml', true);
-    xhttp.send();*/
-
+    window.addEventListener('beforeunload', e => {
+        $route.reload();
+    })
 
     $scope.$on('$viewContentLoaded', function() {
-        let tableBody = document.getElementById('servers')
+        setTimeout(function() {
+            if ($cookies.get('credentials')) {
+                let columns = document.getElementsByClassName('hidden');
+                /*let table = document.querySelector('#server-table');
+                table.lastChild.lastChild.style.visibility = 'visible';*/
+                for (let i = 0; i < columns.length; i++) {
+                    columns[i].style.visibility = 'visible';
+                }
+            }
+        }, 50)
+
+        /*let tableBody = document.getElementById('servers')
 
         setTimeout(function() {
             const statusClass = 'status-light ';
 
-            for (let i in $scope.servers) {
-                /*
+            for (let i = 0; i < $scope.servers.length; i++) {
+                /!*
                 STRUCTURE FOR TABLE INFO
 
                 <tr>
                     <td class="server-name"> {{ server.name }} </td>
                     <td class="status"><p class="status-light {{ server.status }}" id="{{ server.name }}"></p></td>
                 </tr>
-                */
+                *!/
 
                 // create and initialize the elements
                 let tableRow = document.createElement('tr');
@@ -40,7 +42,7 @@ angular.module('ServersCtrl', []).controller('ServersController', function($scop
                 let statusLight = document.createElement('p');
 
                 // insert info into elements
-                serverName.innerText = $scope.servers[i].name;
+                serverName.innerText = $scope.servers[i].serverName;
                 statusLight.className = statusClass + $scope.servers[i].status;
                 statusLight.id = $scope.servers[i].name;
 
@@ -50,16 +52,15 @@ angular.module('ServersCtrl', []).controller('ServersController', function($scop
                 tableRow.appendChild(status)
                 tableBody.appendChild(tableRow);
             }
-
-            setTimeout(function(){
-                if ($scope.servers != undefined) {
-                    console.debug("DEBUG: PINGING SERVERS");
-                    for (let server in $scope.servers) {
-                        console.debug(`DEBUG: PINGING ${$scope.servers[server].name}`)
-                        $ping.ping($scope.servers[server]);
-                    }
-                }
-            }, 500)
-        }, 100)
+        }, 100)*/
     });
+
+    $scope.editServerInfo = function(server) {
+        console.debug(server);
+        window.open(`http://localhost:3000/servers/edit?ipAddress=${server.ipAddress}`, 'MsgWindow');
+    }
+
+    $scope.loggedIn = function() {
+        return $cookies.get('credentials') != undefined;
+    }
 });

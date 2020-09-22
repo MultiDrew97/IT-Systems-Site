@@ -106,4 +106,4 @@ dist
 /api/data/data.json
 /api/data/login.xml
 /api/data/servers.xml
-/public/javascripts/services/EnvSrv.js
+/public/javascripts/services/EnvServ.js

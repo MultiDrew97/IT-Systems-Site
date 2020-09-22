@@ -1,60 +1,69 @@
 <!DOCTYPE HTML>
 <html lang="en" ng-app="IT-Systems">
-  <head>
-    <meta charset="UTF-8">
-    <base href="/"/>
-    <title>IT Systems</title>
+	<head>
+		<meta charset="UTF-8">
+		<base href="/"/>
+		<title>IT Systems</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="./libs/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="./stylesheets/index.css" />
+		<!-- CSS -->
+		<link rel="stylesheet" href="./libs/bootstrap/dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="./libs/angular-material/layouts/angular-material.layouts.ie_fixes.css" />
+		<link rel="stylesheet" href="./libs/angular-material/angular-material.min.css" />
+		<link rel="stylesheet" href="./stylesheets/index.css" />
 
-    <!-- JS -->
-    <script src="./libs/angular/angular.min.js"></script>
-    <script src="./libs/angular-route/angular-route.min.js"></script>
+		<!-- ANGULAR LIBRARIES -->
+		<script src="./libs/angular/angular.min.js"></script>
+		<script src="./libs/angular-route/angular-route.min.js"></script>
+		<script src="./libs/angular-cookies/angular-cookies.min.js"></script>
+		<script src="./libs/angular-material/angular-material.min.js"></script>
+		<script src="./libs/angular-animate/angular-animate.min.js"></script>
+		<script src="./libs/angular-aria/angular-aria.min.js"></script>
 
-    <!-- ANGULAR CUSTOM -->
-    <script src="./javascripts/controllers/MainCtrl.js"></script>
-    <script src="./javascripts/controllers/ServersCtrl.js"></script>
-    <script src="./javascripts/controllers/LoginCtrl.js"></script>
-    <script src="./javascripts/controllers/UsersCtrl.js"></script>
-    <script src="./javascripts/controllers/ManageCtrl.js"></script>
-    <script src="./javascripts/services/PingServ.js"></script>
-    <script src="./javascripts/services/LoginServ.js"></script>
-    <script src="./javascripts/services/CryptoServ.js"></script>
-    <script src="./javascripts/services/EnvSrv.js"></script>
-    <script src="./javascripts/appRoutes.js"></script>
-    <script src="./javascripts/app.js"></script>
-  </head>
+		<!-- ANGULAR CUSTOM CONTROLLERS -->
+		<script src="./javascripts/controllers/MainCtrl.js"></script>
+		<script src="./javascripts/controllers/ServersCtrl.js"></script>
+		<script src="./javascripts/controllers/LoginCtrl.js"></script>
+		<script src="./javascripts/controllers/LogoutCtrl.js"></script>
+		<script src="./javascripts/controllers/UsersCtrl.js"></script>
+		<script src="./javascripts/controllers/ManageCtrl.js"></script>
 
-  <body ng-app="IT-Systems">
-    <header class="main-header" id="top">
-      <nav>
-        <a ng-href="/" id="home-link"><img src="./images/home_logo.png" alt="IT Systems Site"/></a>
-        <a ng-href="/servers" id="server" class="nav-link">Servers</a>
-        <a ng-href="/sites" id="sites" class="nav-link">Sites</a>
-        <a ng-href="/contact" id="contact" class="nav-link">Contact Us</a>
-        <!--<li><a href="mailto:agit@austingastro.com?body=Location:%0d%0aPhone%20Number:%0d%0aIT#%20of%20computer(s):%0d%0aContents%20of%20error%20message(s):" id="ticket" class="nav-link">Submit a Ticket</a></li>-->
-        <a ng-href="/login" id="login-link" class="nav-link">Login</a>
-      </nav>
-    </header>
+		<!-- ANGULAR CUSTOM SERVICES -->
+		<script src="./javascripts/services/PingServ.js"></script>
+		<script src="./javascripts/services/LoginServ.js"></script>
+		<script src="./javascripts/services/CryptoServ.js"></script>
+		<script src="./javascripts/services/EnvServ.js"></script>
+		<script src="./javascripts/services/ServersServ.js"></script>
+		<script src="./javascripts/services/CookiesServ.js"></script>
+		<script src="./javascripts/appRoutes.js"></script>
+		<script src="./javascripts/app.js"></script>
+	</head>
 
-    <!-- ANGULAR DYNAMIC PORTION -->
-    <!-- TODO: I'm not to confident in how this works for webpages. I'll have to mess around
-            with it more to get a better understanding of how exactly it works -->
-    <div class="dynamic">
-      <!-- This allows the page to be dynamically displayed using angular libraries -->
-      <ng-view/>
-    </div>
+	<body ng-app="IT-Systems" ng-controller="MainController">
+		<header class="main-header" id="top">
+			<nav>
+				<a ng-href="/" id="home-link"><img src="./images/home_logo.png" alt="IT Systems Site"/></a>
+				<a ng-href="/servers" id="server" class="nav-link">Servers</a>
+				<a ng-href="/contact" id="contact" class="nav-link">Contact Us</a>
+				<a id="login-link" class="nav-link" ng-href="/" ng-click="popup(event)">Login</a>
+			</nav>
+		</header>
 
-    <section id="help-statement">
-      <p>Systems checking out and still having issues? <a ng-href="/contact">Contact Us</a></p>
-    </section>
+		<!-- ANGULAR DYNAMIC PORTION -->
+		<!-- TODO: I'm not to confident in how this works for webpages. I'll have to mess around
+				with it more to get a better understanding of how exactly it works -->
+		<div class="dynamic">
+			<!-- This allows the page to be dynamically displayed using angular libraries -->
+			<ng-view></ng-view>
+		</div>
 
-    <footer id="bottom-of-page">
-      <p><small>&copy;2020 IT Systems</small></p>
-      <p><small>Icons made by <a href="https://www.flaticon.com/authors/dave-gandy" title="Dave Gandy">Dave Gandy</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></small></p>
-      <a href="#top" id="topLink">Back to Top</a>
-    </footer>
-  </body>
+		<section id="help-statement">
+			<p>Systems checking out and still having issues? <a href="mailto:agit@austingastro.com?body=Location:%0d%0aPhone%20Number:%0d%0aIT#%20of%20computer(s):%0d%0aContents%20of%20error%20message(s):" id="ticket">Submit a Ticket</a></p>
+		</section>
+
+		<footer id="bottom-of-page">
+			<p><small>&copy;2020 IT Systems</small></p>
+			<p><small>Icons made by <a href="https://www.flaticon.com/authors/dave-gandy" title="Dave Gandy">Dave Gandy</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></small></p>
+			<a href="#top" id="topLink">Back to Top</a>
+		</footer>
+	</body>
 </html>
