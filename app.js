@@ -158,8 +158,8 @@ app.get('/api/servers', (req, res) => {
         let password = auth.split(':')[1];
 
         if (utils.checkAuth(username, password)) {
-            if (req.query.ipAddress){
-                let index = utils.findServer(req.query.ipAddress);
+            if (req.query.p0){
+                let index = utils.findServer(req.query.p0);
                 if (index > -1) {
                     res.send(utils.servers[index]);
                 } else {
@@ -213,7 +213,7 @@ app.delete('/api/servers', (req, res) =>{
         let password = auth.split(':')[1];
 
         if (utils.checkAuth(username, password)) {
-            utils.deleteServer(req.query.ipAddress, res);
+            utils.deleteServer(req.query.p0, res);
         } else {
             res.status(401);
             res.send();
@@ -235,7 +235,7 @@ app.put('/api/servers', (req, res) => {
         let password = auth.split(':')[1];
 
         if (utils.checkAuth(username, password)) {
-            utils.updateServer(req.query.ipAddress, req.body, res);
+            utils.updateServer(req.query.p0, req.body, res);
         } else {
             res.status(401);
             res.send();

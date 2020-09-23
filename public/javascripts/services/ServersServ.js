@@ -11,7 +11,7 @@ angular.module('ServersServ', []).service('$server', function($http, $env, $cryp
     }
 
     this.updateServer = function(ipAddress, server) {
-        return $http.put(`/api/server?ipAddress=${ipAddress}`, server, {
+        return $http.put(`/api/server?p0=${ipAddress}`, server, {
             headers: {
                 withCredentials: true,
                 authorization: `basic ${apiAuth}`
@@ -26,5 +26,14 @@ angular.module('ServersServ', []).service('$server', function($http, $env, $cryp
                 authorization: `Basic ${apiAuth}`
             }
         });
+    }
+
+    this.removeServer = function(ipAddress) {
+        return $http.delete(`/api/servers?p0=${ipAddress}`, {
+            headers: {
+                withCredentials: true,
+                authorization: `Basic ${apiAuth}`
+            }
+        })
     }
 })

@@ -1,15 +1,102 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="IT-Systems">
-    <head>
-        <meta charset="UTF-8">
-        <title>IT Systems</title>
+	<head>
+		<meta charset="UTF-8">
+		<title>IT Systems</title>
 
-        <link rel="stylesheet" href="../stylesheets/manage.css" type="text/css"/>
-    </head>
-    <body ng-controller="ManageController">
-        <main>
-            <h1 class="title">Server Management</h1>
-            <h4>Edit, Add and Remove any servers that are being monitored by the site</h4>
-        </main>
-    </body>
+		<link rel="stylesheet" href="../stylesheets/manage.css" type="text/css"/>
+	</head>
+	<body ng-controller="ManageController as ctrl">
+		<main id="manage-window">
+			<h1 class="title">Server Management</h1>
+			<h4 class="subtitle">Edit, Add and Remove any servers that are being monitored by the site</h4>
+			<!-- TODO: Potentially include a way for the manager to update the checking frequency of the servers within the website -->
+
+
+			<div id="manage-options">
+
+				<div class="option">
+					<input type="radio" id="edit" checked="checked" ng-model="option" value="edit" ng-change="editChanged()" name="management" />
+					<label for="edit">Edit Servers</label>
+				</div>
+
+				<div class="option">
+					<input type="radio" id="add" ng-model="option" value="add" name="management" />
+					<label for="add">Add Server</label>
+				</div>
+
+				<div class="option">
+					<input type="radio" id="delete" ng-model="option" value="remove" name="management" />
+					<label for="delete">Remove Server</label>
+				</div>
+
+				<input class="option" type="button" id="changeChecks" value="Check Frequency" ng-click="changeFrequency()" />
+			</div>
+
+			<div ng-if="option === 'edit' " id="edit-form" class="form-container">
+				<!--<label for="editing-servers">Select a Server:</label>-->
+				<select id="editing-servers" ng-model="selection.edit" ng-change="changed()">
+					<option value="">---Select a Server---</option>
+					<option ng-repeat="server in serverList" ng-value="server">{{ server.serverName }}</option>
+				</select>
+
+				<form ng-submit="updateServer()" id="editing" ng-show="selected">
+					<label for="serverName">Server Name:</label>
+					<input type="text" id="serverName" ng-model="selection.edit.serverName" ng-readonly="!selected" required />
+
+					<label for="dnsName">DNS Name:</label>
+					<input type="text" id="dnsName" ng-model="selection.edit.dnsName" ng-readonly="!selected" required />
+
+					<label for="ipAddress">IP Address:</label>
+					<input type="text" id="ipAddress" ng-model="selection.edit.ipAddress" ng-readonly="!selected" pattern="^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$" required />
+
+					<div id="status">
+						<p id="currentStatus">Current Status</p>
+						<label for="up">
+							<input type="radio" id="up" ng-model="selection.edit.status" name="status" value="up" /> Up
+						</label>
+
+						<label for="down">
+							<input type="radio" id="down" ng-model="selection.edit.status" name="status" value="down" /> Down
+						</label>
+
+						<label for="maintenance">
+							<input type="radio" id="maintenance" ng-model="selection.edit.status" name="status" value="maintenance" /> Under Maintenance
+						</label>
+					</div>
+
+					<input type="submit" class="submit" value="Update Server" id="editServer"  form="editing"/>
+				</form>
+			</div>
+
+			<div ng-if="option === 'add'" id="add-form" class="form-container">
+				<form ng-submit="addServer()" id="addition">
+					<!-- TODO: Add the form to be able to add a server -->
+					<label for="newServerName">Server Name:</label>
+					<input type="text" id="newServerName" ng-model="newServer.serverName" required />
+
+					<label for="newDNSName">DNS Name:</label>
+					<input type="text" id="newDNSName" ng-model="newServer.dnsName" required />
+
+					<label for="newIPAddress">IP Address:</label>
+					<input type="text" id="newIPAddress" ng-model="newServer.ipAddress" pattern="^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$" required />
+
+					<input type="submit" class="submit" value="Add Server" id="addServer" form="addition"/>
+				</form>
+			</div>
+
+			<div ng-if="option === 'remove'" id="remove-form" class="form-container">
+				<form ng-submit="confirmRemoval()" id="removal">
+					<select name="removeServer" id="remove-servers" ng-model="selection.removals" multiple required>
+						<option ng-repeat="server in serverList" ng-value="server">{{ server.serverName }}</option>
+					</select>
+
+					<div class="remove-buttons">
+						<input type="button" class="submit clear remove-button" value="Clear Selections" ng-click="clearSelection()" />
+						<input type="submit" class="submit remove remove-button" form="removal" value="Remove Server" />
+					</div>
+				</form>
+			</div>
+		</main>
+	</body>
 </html>

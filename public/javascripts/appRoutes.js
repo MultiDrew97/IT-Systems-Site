@@ -37,8 +37,8 @@ angular.module('appRoutes', [])
                 templateUrl: 'views/manage.html',
                 controller: 'ManageController',
                 resolve: {
-                    servers: function($servers) {
-                        return $servers.servers();
+                    servers: function($server) {
+                        return $server.servers();
                     }
                 }
             })

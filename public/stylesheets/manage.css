@@ -1,0 +1,92 @@
+.form-container {
+    display: inline-flex;
+    flex-flow: column;
+    border: 2px #f1f1f1 solid;
+    padding: 10%;
+    width: 100%;
+    margin: 1% 10%;
+    align-content: center;
+}
+
+#manage-window {
+    margin: 10% 25%;
+    display: inline-flex;
+    flex-direction: column;
+}
+
+body {
+    width: auto;
+    height: auto;
+}
+
+#editing-servers {
+    width: auto;
+    margin: 2% 33%;
+}
+
+#edit-form div {
+    display: inline-flex;
+    flex-direction: column;
+    padding: 10%;
+}
+
+.submit {
+    width: 50%;
+    align-self: center;
+    margin: 10%;
+}
+
+.title, .subtitle {
+    text-align: center;
+    position: relative;
+    left: 10%;
+}
+
+#addition, #removal, #editing {
+    display: inline-flex;
+    flex-flow: column nowrap;
+    padding: 10%;
+}
+
+#manage-options {
+    display: inline-flex;
+    flex-flow: row nowrap;
+    position: relative;
+    left: 12%;
+    padding: 1% 5%;
+}
+
+label {
+    margin-left: 0.5rem;
+    margin-top: 0.2rem;
+}
+
+#changeChecks {
+    width: auto;
+    height: auto;
+    margin-left: 10%;
+}
+
+.option {
+    margin: 1%;
+}
+
+.remove {
+    color: red;
+}
+
+.clear {
+
+}
+
+.remove-buttons {
+    display: inline-flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.remove-button {
+    margin-right: 1%;
+    margin-left: 1%;
+    width: 50%;
+}
