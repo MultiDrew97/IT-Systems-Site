@@ -26,3 +26,17 @@ nav {
 #help-statement {
     text-align: center;
 }
+
+html {
+    font-family: Ariel, Helvetica, sans-serif;
+    max-width: 100%;
+}
+
+:root {
+    width: auto;
+}
+
+body {
+    width: auto;
+    height: auto;
+}

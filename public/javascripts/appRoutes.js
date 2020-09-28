@@ -1,5 +1,10 @@
 angular.module('appRoutes', [])
-    .config(['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) => {
+    .config(['$routeProvider', '$locationProvider', '$provide', ($routeProvider, $locationProvider, $provide) => {
+        $provide.decorator('$sniffer', function($delegate) {
+            $delegate.history = false;
+            return $delegate;
+        });
+
         $routeProvider
             // home page
             .when('/', {
@@ -16,9 +21,10 @@ angular.module('appRoutes', [])
                         return $server.lastChecked();
                     },
                     servers: function($server) {
-                        return $server.servers();
+                        return $server.get();
                     }
-                }
+                },
+                onSameUrlNavigation: 'reload'
             })
 
             // login page
@@ -38,19 +44,28 @@ angular.module('appRoutes', [])
                 controller: 'ManageController',
                 resolve: {
                     servers: function($server) {
-                        return $server.servers();
+                        return $server.get();
+                    },
+                    cookies: function($cookies) {
+                        return $cookies.getAll();
                     }
-                }
+                },
+                onSameUrlNavigation: 'reload'
+            })
+
+            .when('/404', {
+                templateUrl: 'views/404.html'
             })
 
             // Not Found 404 error page
             .otherwise({
-                redirectTo: '/'
+                redirectTo: '/404'
             });
 
         $locationProvider.html5Mode({
             enabled: true,
-            requireBase: false
+            requireBase: false,
+            hashPrefix: '!'
         });
         // TODO: Create all of the routes that will be used for the website.
         //  this only has a few of the routes but there are more routes planned

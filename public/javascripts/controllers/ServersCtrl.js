@@ -2,10 +2,6 @@ angular.module('ServersCtrl', []).controller('ServersController', function($scop
     $scope.lastChecked = checked.data.date || 'Has not been checked yet';
     $scope.servers = servers.data;
 
-    window.addEventListener('beforeunload', e => {
-        $route.reload();
-    })
-
     $scope.$on('$viewContentLoaded', function() {
         setTimeout(function() {
             if ($cookies.get('credentials')) {
@@ -56,8 +52,8 @@ angular.module('ServersCtrl', []).controller('ServersController', function($scop
     });
 
     $scope.editServerInfo = function(server) {
-        console.debug(server);
-        window.open(`http://localhost:3000/servers/edit?ipAddress=${server.ipAddress}`, 'MsgWindow');
+        /*console.debug(server);
+        window.open(`http://localhost:3000/servers/edit?ipAddress=${server.ipAddress}`, 'MsgWindow');*/
     }
 
     $scope.loggedIn = function() {

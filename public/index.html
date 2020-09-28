@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en" ng-app="IT-Systems">
 	<head>
-		<meta charset="UTF-8">
+		<meta charset="UTF-8" content="!">
 		<base href="/"/>
 		<title>IT Systems</title>
 
@@ -44,26 +44,26 @@
 				<a ng-href="/" id="home-link"><img src="./images/home_logo.png" alt="IT Systems Site"/></a>
 				<a ng-href="/servers" id="server" class="nav-link">Servers</a>
 				<a ng-href="/contact" id="contact" class="nav-link">Contact Us</a>
-				<a id="login-link" class="nav-link" ng-href="/" ng-click="popup(event)">Login</a>
+				<a id="login-link" class="nav-link" href="#" ng-click="popup(event)">Login</a>
 			</nav>
 		</header>
 
 		<!-- ANGULAR DYNAMIC PORTION -->
-		<!-- TODO: I'm not to confident in how this works for webpages. I'll have to mess around
-				with it more to get a better understanding of how exactly it works -->
-		<div class="dynamic">
+		<div class="dynamic" id="content">
 			<!-- This allows the page to be dynamically displayed using angular libraries -->
 			<ng-view></ng-view>
 		</div>
 
-		<section id="help-statement">
-			<p>Systems checking out and still having issues? <a href="mailto:agit@austingastro.com?body=Location:%0d%0aPhone%20Number:%0d%0aIT#%20of%20computer(s):%0d%0aContents%20of%20error%20message(s):" id="ticket">Submit a Ticket</a></p>
-		</section>
+		<div id="bottom">
+			<section id="help-statement">
+				<p>Systems checking out and still having issues? <a href="mailto:agit@austingastro.com?body=Location:%0d%0aPhone%20Number:%0d%0aIT#%20of%20computer(s):%0d%0aContents%20of%20error%20message(s):" id="ticket">Submit a Ticket</a></p>
+			</section>
 
-		<footer id="bottom-of-page">
-			<p><small>&copy;2020 IT Systems</small></p>
-			<p><small>Icons made by <a href="https://www.flaticon.com/authors/dave-gandy" title="Dave Gandy">Dave Gandy</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></small></p>
-			<a href="#top" id="topLink">Back to Top</a>
-		</footer>
+			<footer id="bottom-of-page">
+				<p><small>&copy;2020 IT Systems</small></p>
+				<p><small>Icons made by <a href="https://www.flaticon.com/authors/dave-gandy" title="Dave Gandy">Dave Gandy</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></small></p>
+				<a id="topLink"><img alt="Back to Top" src="./images/top.png" onclick="window.scroll({top: 0, left: 0, behavior: 'smooth'})"/></a>
+			</footer>
+		</div>
 	</body>
 </html>

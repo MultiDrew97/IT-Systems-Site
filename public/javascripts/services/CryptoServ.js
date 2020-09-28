@@ -3,25 +3,26 @@
 */
 
 angular.module('CryptoServ', []).service('$crypto', function() {
-    this.encode = (value) => {
-        /*
-            Encode the value using the algorithm
+    return {
+        encode: (value) => {
+            /*
+                Encode the value using the algorithm
 
-            @param value Value that is needed to be encrypted
+                @param value Value that is needed to be encrypted
 
-            @return Encrypted value
-         */
-        return btoa(value);
-    }
+                @return Encrypted value
+             */
+            return btoa(value);
+        },
+        decode: (value) => {
+            /*
+                Decode the value using the algorithm
 
-    this.decode = (value) => {
-        /*
-            Decode the value using the algorithm
+                @param value Value that is needed to be decrypted
 
-            @param value Value that is needed to be decrypted
-
-            @return Decrypted value
-         */
-        return atob(value);
+                @return Decrypted value
+             */
+            return atob(value);
+        }
     }
 })

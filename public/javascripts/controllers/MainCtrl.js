@@ -1,4 +1,4 @@
-angular.module('MainCtrl', []).controller('MainController', function($location, $scope, $cookies, $login, $mdDialog) {
+angular.module('MainCtrl', []).controller('MainController', function($location, $scope, $cookies, $login, $mdDialog, $location, $route) {
     const loginLink = document.querySelector('#login-link');
     /*const ngClick = document.createAttribute('ng-click');
     ngClick.value = 'loginPopup()';*/
@@ -9,19 +9,18 @@ angular.module('MainCtrl', []).controller('MainController', function($location, 
         }
     })
 
-    const checkInterval = setInterval(() => {
-        if ($cookies.get('credentials')) {
-            console.debug('credentials found')
-            clearInterval(checkInterval);
-            loginLink.innerText = 'Logout';
-        }
-    }, 100);
-
     $scope.$on('$viewContentLoaded', function() {
         if ($cookies.get('credentials')) {
             loginLink.innerText = 'Logout';
         } else {
             loginLink.innerText = 'Login'
+            const checkInterval = setInterval(() => {
+                if ($cookies.get('credentials')) {
+                    console.debug('credentials found')
+                    clearInterval(checkInterval);
+                    loginLink.innerText = 'Logout';
+                }
+            }, 100);
         }
     })
 
@@ -33,6 +32,9 @@ angular.module('MainCtrl', []).controller('MainController', function($location, 
                 parent: angular.element(document.body),
                 targetEvent: ev,
                 clickOutsideToClose: true
+            }).then(() => {
+                loginLink.innerText = 'Logout';
+                $route.reload();
             })
         } else if (loginLink.innerText === 'Logout') {
             $mdDialog.show({
@@ -43,6 +45,7 @@ angular.module('MainCtrl', []).controller('MainController', function($location, 
                 clickOutsideToClose: false
             }).then(() => {
                 loginLink.innerText = 'Login';
+                $route.reload();
             })
         }
     }

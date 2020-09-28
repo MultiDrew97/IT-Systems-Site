@@ -69,36 +69,68 @@ utils = {
             if (res === null) {
                 fs.writeFile(this.path, JSON.stringify(temp), (err) => {
                     if (err) {
-                        console.log(err);
+                        return err;
                     }
                 });
             }
         } else {
             /*
-            Adds a "logging" feature to the saving of the data file. It will keep up to 2 backups of the data file,
-            which will be created everytime the file is changed
+                Adds a "logging" feature to the saving of the data file. It will keep up to 2 backups of the data file,
+                which will be created everytime the file is changed
 
-            Currently untested in the fact of if it completely works as intended
+                Currently untested in the fact of if it completely works as intended
+            */
+
             fs.access(this.path, err => {
-                if (err)
+                if (err) {
+                    // if main doesn't exist, save to main
+                    fs.writeFile(this.path, JSON.stringify(temp), err => {
+                        //write the contents of the data to the main file
+                        if (err)
+                            return err;
+                    })
                     return err;
+                }
 
                 fs.access(backup1, err => {
                     if (err) {
-                        //copy the contents of the main file to backup1
+                        // if backup 1 doesn't exist, copy main to backup1 then save main
+                        fs.copyFile(this.path, backup1, err => {
+                            // copy contents of main file to backup 1
+                            if (err)
+                                return err;
+
+                            fs.writeFile(this.path, JSON.stringify(temp), err => {
+                                //write the contents of the data to the main file
+                                if (err)
+                                    return err;
+                            })
+                        })
                         return err;
                     }
                     fs.copyFile(backup1, backup2, err => {
                         //copy the contents of backup1 into backup2, then save the main file
-                        fs.writeFile(this.path, temp, err => {
+
+                        if (err)
+                            return err;
+
+                        fs.copyFile(this.path, backup1, err => {
+                            // copy contents of main file to backup 1
                             if (err)
-                                return err
+                                return err;
+
+                            fs.writeFile(this.path, JSON.stringify(temp), err => {
+                                //write the contents of the main file
+                                if (err)
+                                    return err;
+                            })
                         })
                     })
                 })
-            })*/
+            })
 
-            fs.writeFile(this.path, JSON.stringify(temp), (err) => {
+            // Backup saving function in case the "logging" feature doesn't work as intended
+            /*fs.writeFile(this.path, JSON.stringify(temp), (err) => {
                 if (err) {
                     res.status(statusCode.bad);
                     res.send(err)
@@ -107,7 +139,7 @@ utils = {
 
                 res.status(statusCode.good);
                 res.send();
-            });
+            });*/
         }
     },
     findServer: function (ipAddress) {
@@ -367,7 +399,9 @@ utils = {
     },
     checkServers: function() {
         for (let i = 0; i < this.servers.length; i++) {
-            this.ping(i);
+            if (this.servers[i].status !== 'maintenance') {
+                this.ping(i);
+            }
         }
 
         this.lastChecked = Date.now();

@@ -8,8 +8,12 @@ const cookieParser = require('cookie-parser');
 const jsBase64 = require('js-base64');
 const fs = require('fs');
 const utils = require('./api/utils/utils');
-
+const Timer = require('./api/utils/timer');
 /*const bodyParser = require('body-parser');*/
+
+/*
+    Logger file setup
+ */
 
 let logger = require('morgan');
 const logStream = fs.createWriteStream(path.join(__dirname, 'logs/systems_api.log'), {flags: 'a'});
@@ -23,7 +27,7 @@ try {
     try {
         temp = fs.opendirSync(path.join(__dirname, 'logs'));
     } catch (ex) {
-        throw Error('Could not create the directory');
+        throw Error('Failed to create the directory');
     }
 } finally {
     temp.closeSync();
@@ -264,8 +268,28 @@ app.get('/api/servers/checked', (req, res) => {
     }
 })
 
-setInterval(function() {
-    utils.checkServers()
+// TODO: Reimplement when ready
+/*app.put('/api/servers/timer', (req, res) => {
+    if (req.headers.authorization) {
+        let auth = jsBase64.decode(req.headers.authorization.split(' ')[1]);
+        let username = auth.split(':')[0];
+        let password = auth.split(':')[1];
+
+        if (utils.checkAuth(username, password)) {
+            // TODO: Ensure that I get the correct name for the parameter
+            timer.reset(utils.convertToMinutes(req.body.interval))
+        } else {
+            res.status(401);
+            res.send();
+        }
+    } else {
+        res.status(401);
+        res.send();
+    }
+})*/
+
+let timer = new Timer(function() {
+    utils.checkServers();
 }, utils.convertToMinutes(2))
 
 module.exports = app;

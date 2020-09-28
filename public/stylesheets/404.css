@@ -1,0 +1,16 @@
+#help-statement {
+    visibility: hidden;
+}
+
+#error-page {
+    line-height: 2rem;
+    text-align: center;
+    margin: 3%;
+}
+
+#error-image {
+    max-width: 25%;
+    max-height: 25%;
+    position: sticky;
+    left: 38%;
+}

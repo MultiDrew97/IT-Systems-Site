@@ -4,19 +4,19 @@
     border: 2px #f1f1f1 solid;
     padding: 10%;
     width: 100%;
-    margin: 1% 10%;
+    margin: 1% auto;
     align-content: center;
 }
 
 #manage-window {
-    margin: 10% 25%;
+    margin: 5%;
     display: inline-flex;
     flex-direction: column;
-}
-
-body {
     width: auto;
-    height: auto;
+    max-width: 100%;
+    min-width: 50%;
+    position: sticky;
+    left: 24%;
 }
 
 #editing-servers {
@@ -38,8 +38,8 @@ body {
 
 .title, .subtitle {
     text-align: center;
-    position: relative;
-    left: 10%;
+    /*position: relative;
+    left: 10%;*/
 }
 
 #addition, #removal, #editing {
@@ -73,20 +73,40 @@ label {
 
 .remove {
     color: red;
+    margin-left: 5%;
 }
 
 .clear {
-
+    margin-right: 5%;
 }
 
 .remove-buttons {
     display: inline-flex;
     flex-direction: row;
-    width: 100%;
+    width: auto;
+    margin: 5% 10% 0 10%;
 }
 
 .remove-button {
-    margin-right: 1%;
-    margin-left: 1%;
-    width: 50%;
+    width: auto;
+}
+
+#denied {
+    padding: 5%;
+}
+
+.selector {
+    display: inline-flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#remove-servers {
+    display:inline-flex;
+    flex-flow: column wrap;
+    max-width: 100%;
+    min-width: 50%;
+    width: auto;
+    align-self: center;
+    margin-left: 5%;
 }
