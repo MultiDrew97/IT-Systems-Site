@@ -41,6 +41,15 @@ angular.module('LoginCtrl', []).controller('LoginController', function($scope, $
         }, err => {
             alert(err);
         });
+    }
 
+    $scope.forgotPassword = function(ev) {
+        $mdDialog.show({
+            controller: 'ForgotController',
+            templateUrl: 'views/forgot.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose: false
+        });
     }
 })

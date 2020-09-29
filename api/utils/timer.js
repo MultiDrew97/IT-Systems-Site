@@ -20,7 +20,7 @@ function Timer(fn, t) {
     }
 
     this.reset = function(newTime = t) {
-        options.currentInterval = newTime;
+        t = newTime;
         return this.stop().start();
     }
 }

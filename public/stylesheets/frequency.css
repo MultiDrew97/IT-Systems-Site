@@ -1,0 +1,41 @@
+.frequency-popup {
+    max-width: 50%;
+    max-height: 50%;
+    min-width: 20%;
+    min-height: 30%;
+    width: auto;
+    height: auto;
+    display: inline-flex;
+    flex-flow: column wrap;
+    padding-top: 1%;
+}
+
+#frequencies {
+    max-width: 70%;
+    width: auto;
+    align-self: center;
+    text-align: center;
+    margin: 5%;
+}
+
+#change-frequency {
+    max-width: 80%;
+    width: auto;
+    align-self: center;
+    margin: 5%;
+    border: #f1f1f1 3px solid;
+}
+
+#change {
+    width: auto;
+    white-space: normal;
+    max-height: 50%;
+    max-width: 70%;
+    align-self: center;
+    margin: 5%;
+}
+
+#manage-window {
+    position: relative;
+    left: 20%;
+}

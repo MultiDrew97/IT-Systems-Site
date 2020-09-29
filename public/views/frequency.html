@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>IT Systems Site</title>
+
+		<link rel="stylesheet" href="../stylesheets/frequency.css" type="text/css" />
+	</head>
+	<body ng-controller="FrequencyController">
+		<md-dialog class="frequency-popup">
+			<form id="change-frequency" ng-submit="changeFrequency()">
+				<select id="frequencies" ng-model="frequency">
+					<option value="0" ng-selected="frequency === 0">Stop Checks</option>
+					<option value="0.5" ng-selected="frequency === 0.5">30 seconds</option>
+					<option value="1" ng-selected="frequency === 1">1 minute</option>
+					<option value="2" ng-selected="frequency === 2">2 minutes</option>
+					<option value="5" ng-selected="frequency === 5">5 minutes</option>
+					<option value="10" ng-selected="frequency === 10">10 minutes</option>
+				</select>
+
+				<input id="change" type="submit" value="Change Check Frequency" />
+			</form>
+		</md-dialog>
+	</body>
+</html>

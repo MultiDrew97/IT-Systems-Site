@@ -10,8 +10,6 @@
 		<main id="manage-window" ng-if="granted">
 			<h1 class="title">Server Management</h1>
 			<h4 class="subtitle">Edit, Add and Remove any servers that are being monitored by the site</h4>
-			<!-- TODO: Potentially include a way for the manager to update the checking frequency of the servers within the website -->
-
 
 			<div id="manage-options">
 				<div class="option">
@@ -29,11 +27,12 @@
 					<label for="remove">Remove Server</label>
 				</div>
 
-				<input class="option" type="button" id="changeChecks" value="Check Frequency" ng-click="changeFrequency()" />
+				<input class="option" type="button" id="changeChecks" value="Check Frequency" ng-click="changeFrequency(event)" />
 			</div>
 
 			<div ng-if="option === 'edit' " id="edit-form" class="form-container">
 				<!--<label for="editing-servers">Select a Server:</label>-->
+				<h3 class="title">Edit Servers</h3>
 				<select id="editing-servers" ng-model="selection.edit" ng-change="changed()">
 					<option value="">---Select a Server---</option>
 					<option ng-repeat="server in serverList" ng-value="server">{{ server.serverName }}</option>
@@ -69,8 +68,8 @@
 			</div>
 
 			<div ng-if="option === 'add'" id="add-form" class="form-container">
+				<h3 class="title">Add New Server</h3>
 				<form ng-submit="addServer()" id="addition">
-					<!-- TODO: Add the form to be able to add a server -->
 					<label for="newServerName">Server Name:</label>
 					<input type="text" id="newServerName" ng-model="newServer.serverName" required />
 
@@ -85,19 +84,10 @@
 			</div>
 
 			<div ng-if="option === 'remove'" id="remove-form" class="form-container">
+				<h3 class="title">Remove Servers</h3>
 				<form ng-submit="confirmRemoval()" id="removal">
 					<select id="remove-servers" ng-model="selection.removals" multiple required>
 						<option class="selector" ng-repeat="server in serverList" ng-value="server">{{ server.serverName }}</option>
-						<!--<option class="selector" value="Option 1">Option 1</option>
-						<option class="selector" value="Option 2">Option 2</option>
-						<option class="selector" value="Option 3">Option 3</option>
-						<option class="selector" value="Option 4">Option 4</option>
-						<option class="selector" value="Option 5">Option 5</option>
-						<option class="selector" value="Option 6">Option 6</option>
-						<option class="selector" value="Option 7">Option 7</option>
-						<option class="selector" value="Option 8">Option 8</option>
-						<option class="selector" value="Option 9">Option 9</option>
-						<option class="selector" value="Option 10">Option 10</option>-->
 					</select>
 
 					<div class="remove-buttons">

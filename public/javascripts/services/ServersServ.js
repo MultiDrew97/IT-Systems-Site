@@ -41,6 +41,14 @@ angular.module('ServersServ', []).service('$server', function($http, $env, $cryp
                     authorization: `Basic ${apiAuth}`
                 }
             })
+        },
+        getFrequency: function() {
+            return $http.get('/api/servers/timer', {
+                headers: {
+                    withCredentials: true,
+                    authorization: `Basic ${apiAuth}`
+                }
+            })
         }
     }
 })

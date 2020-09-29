@@ -25,28 +25,27 @@ angular.module('MainCtrl', []).controller('MainController', function($location, 
     })
 
     $scope.popup = function(ev) {
-        if(loginLink.innerText === 'Login') {
-            $mdDialog.show({
-                controller: 'LoginController',
-                templateUrl: 'views/login.html',
-                parent: angular.element(document.body),
-                targetEvent: ev,
-                clickOutsideToClose: true
-            }).then(() => {
-                loginLink.innerText = 'Logout';
-                $route.reload();
-            })
-        } else if (loginLink.innerText === 'Logout') {
-            $mdDialog.show({
-                controller: 'LogoutController',
-                templateUrl: 'views/logout.html',
-                parent: angular.element(document.body),
-                targetEvent: ev,
-                clickOutsideToClose: false
-            }).then(() => {
-                loginLink.innerText = 'Login';
-                $route.reload();
-            })
+        const popup = {
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose: true
         }
+
+        let innerText;
+
+        if(loginLink.innerText === 'Login') {
+            popup.controller = 'LoginController';
+            popup.templateUrl = 'views/login.html';
+            innerText = 'Logout';
+        } else if (loginLink.innerText === 'Logout') {
+            popup.controller = 'LogoutController';
+            popup.templateUrl = 'views/logout.html';
+            innerText = 'Login';
+        }
+
+        $mdDialog.show(popup).then(() => {
+            loginLink.innerText = innerText;
+            $route.reload();
+        })
     }
 });

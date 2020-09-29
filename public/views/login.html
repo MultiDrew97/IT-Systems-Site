@@ -27,9 +27,9 @@
                 </div>
             </form>
 
-            <!--TODO: Figure out how to make a popup to handle forgotten passwords and even the sign-in window-->
+            <!--TODO: Either use an emailing system to send a reset link, or change the password in site -->
             <div class="forgot-container">
-                <p id="forgot-password"><small><a ng-href="/login/reset">Forgot my password</a></small></p>
+                <p id="forgot-password"><small><a href="#" ng-click="forgotPassword($event)">Forgot my password</a></small></p>
             </div>
         </md-dialog>
     </body>

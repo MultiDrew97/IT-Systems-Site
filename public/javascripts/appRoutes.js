@@ -67,6 +67,4 @@ angular.module('appRoutes', [])
             requireBase: false,
             hashPrefix: '!'
         });
-        // TODO: Create all of the routes that will be used for the website.
-        //  this only has a few of the routes but there are more routes planned
     }]);

@@ -11,6 +11,12 @@ const utils = require('./api/utils/utils');
 const Timer = require('./api/utils/timer');
 /*const bodyParser = require('body-parser');*/
 
+
+/*
+    Some variables for the server applications
+ */
+let currentInterval = 2;
+
 /*
     Logger file setup
  */
@@ -76,6 +82,48 @@ app.get('/api/users/login', (req, res) => {
             } else {
                 res.send({valid: false});
             }
+        } else {
+            res.status(401);
+            res.send();
+        }
+    } else {
+        res.status(401);
+        res.send();
+    }
+})
+
+app.put('/api/users/login', (req, res) => {
+    if (req.headers.authorization) {
+        let auth = jsBase64.decode(req.headers.authorization.split(' ')[1]);
+        let username = auth.split(':')[0];
+        let password = auth.split(':')[1];
+
+        if (utils.checkAuth(username, password)) {
+            utils.changePassword(req.query.p0, jsBase64.decode(req.body.newPassword));
+        } else {
+            res.status(401);
+            res.send();
+        }
+    } else {
+        res.status(401);
+        res.send();
+    }
+})
+
+app.get('/api/users/reset', (req, res) => {
+    if (req.headers.authorization) {
+        let auth = jsBase64.decode(req.headers.authorization.split(' ')[1]);
+        let username = auth.split(':')[0];
+        let password = auth.split(':')[1];
+
+        if (utils.checkAuth(username, password)) {
+            utils.reset(req.body.email).then((err, info) => {
+                if (err)
+                    res.sendStatus(400);
+
+                res.sendStatus(200);
+            });
+            res.sendStatus(200);
         } else {
             res.status(401);
             res.send();
@@ -268,16 +316,14 @@ app.get('/api/servers/checked', (req, res) => {
     }
 })
 
-// TODO: Reimplement when ready
-/*app.put('/api/servers/timer', (req, res) => {
+app.get('/api/servers/timer', (req, res) => {
     if (req.headers.authorization) {
         let auth = jsBase64.decode(req.headers.authorization.split(' ')[1]);
         let username = auth.split(':')[0];
         let password = auth.split(':')[1];
 
         if (utils.checkAuth(username, password)) {
-            // TODO: Ensure that I get the correct name for the parameter
-            timer.reset(utils.convertToMinutes(req.body.interval))
+            res.send({interval: currentInterval});
         } else {
             res.status(401);
             res.send();
@@ -286,10 +332,44 @@ app.get('/api/servers/checked', (req, res) => {
         res.status(401);
         res.send();
     }
-})*/
+})
+
+app.put('/api/servers/timer', (req, res) => {
+    if (req.headers.authorization) {
+        let auth = jsBase64.decode(req.headers.authorization.split(' ')[1]);
+        let username = auth.split(':')[0];
+        let password = auth.split(':')[1];
+
+        if (utils.checkAuth(username, password)) {
+            if (req.body.interval > 0) {
+                timer.reset(utils.convertToMinutes(req.body.interval));
+            } else {
+                timer.stop();
+            }
+
+            res.sendStatus(200);
+        } else {
+            res.status(401);
+            res.send();
+        }
+    } else {
+        res.status(401);
+        res.send();
+    }
+})
+
+/*
+    Password Reset Link Handles
+ */
+
+app.get('/login/reset', (req, res) => {
+    let info = req.query;
+    console.log(JSON.parse(jsBase64.decode(req.query.p0)));
+    res.sendStatus(200);
+})
 
 let timer = new Timer(function() {
     utils.checkServers();
-}, utils.convertToMinutes(2))
+}, utils.convertToMinutes(currentInterval))
 
 module.exports = app;

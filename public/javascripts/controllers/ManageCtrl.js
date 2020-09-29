@@ -40,18 +40,17 @@ angular.module('ManageCtrl', []).controller('ManageController', function($scope,
         }
     }
 
-    $scope.changeFrequency = function () {
-        // TODO: Create a popup to change the checking frequency of the servers
-
-        // TODO: In popup, use a dropdown (select) to have preset checking intervals
-        /*$mdDialog.show({
-
-        })*/
+    $scope.changeFrequency = function(ev) {
+        $mdDialog.show({
+            controller: 'FrequencyController',
+            templateUrl: 'views/frequency.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose: true
+        })
     }
 
     $scope.updateServer = function () {
-        console.log($scope.selection.edit);
-
         $server.update($scope.oldIpAddress, $scope.selection.edit).then(() => {
             $route.reload();
         }, failure => {

@@ -3,12 +3,26 @@ const fs = require('fs');
 const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 const backup1 = './api/data/data_1.json';
 const backup2 = './api/data/data_2.json';
+const nodemailer = require('nodemailer');
+const emailer = nodemailer.createTransport({
+    service: 'outlook',
+    auth: {
+        user: 'andrewr@austingastro.com',
+        pass: 'JasmineLove2499'
+    }
+});
+const jsBase64 = require('js-base64');
 
 utils = {
     users: [],
     servers: [],
     path: './api/data/data.json',
     lastChecked: Date,
+    mailOptions: {
+        from: 'andrewr@austingastro.com',
+        subject: 'IT Systems Password Reset'
+    },
+    baseUrl: 'http://localhost:3000/login/reset',
     loadData: function () {
         /*
             Load the data from the data file and store them in the servers and users arrays
@@ -358,6 +372,7 @@ utils = {
 
         ping.ontimeout = function () {
             TIMEOUT_ERROR = true;
+            utils.servers[serverIndex].status = 'down';
         }
 
         ping.open('HEAD', `https://${this.servers[serverIndex].dnsName}`, true);
@@ -404,8 +419,41 @@ utils = {
             }
         }
 
+        // TODO: Decide how to send notification that there are servers down
+
         this.lastChecked = Date.now();
         this.saveData(null, true);
+    },
+    changePassword: function(username, newPassword) {
+        for (let i = 0; i < this.users.length; i++) {
+            if (this.users[i].username === username) {
+                this.users[i].password = newPassword;
+            }
+        }
+    },
+    reset: function(email) {
+        for (let i = 0; i < this.users.length; i++) {
+            if (this.users[i].email === email) {
+                return this.sendEmail(this.users[i]);
+            }
+        }
+    },
+    sendEmail: function(user) {
+        let message = `<div id="email-content"><h1 class="title">Password Reset</h1>` +
+            `<div id="email-body"><p class="text">We received a request to reset your password, which can be accessed below.</p><br/>` +
+            `<p class="text">If you didn't request this reset, you can disregard this message.</p></div>` +
+            `<a id="reset-link" href='${this.baseUrl}?p0=${jsBase64.encode(JSON.stringify(user), true)}'>Reset Password</a><hr/>` +
+            `<p>AGIT</p></div>`;
+
+        let email = this.mailOptions;
+        email.to = user.email;
+        /*
+            TODO: Figure out how to create a time limit on the reset link
+         */
+        email.html = message
+        return emailer.sendMail(email);
+    },
+    generateToken: function() {
     }
 }
 module.exports = utils;
