@@ -5,10 +5,12 @@
 		<title>IT Systems Site</title>
 
 		<link rel="stylesheet" type="text/css" href="../stylesheets/forgot.css" />
+		<script src="../javascripts/forgot.js"></script>
 	</head>
-	<body ng-controller="ForgotController">
-		<md-dialog class="forgot-popup">
-			<form ng-submit="changePassword()" id="change">
+	<body ng-controller="ForgotController" onload="loadPage()">
+		<!--<md-dialog class="forgot-popup">-->
+		<div id="update">
+			<form id="change" action="#" onsubmit="changePassword(event)">
 				<div class="pair">
 					<label for="new-password">New Password:</label>
 					<input type="password" minlength="8" ng-model="newPassword" id="new-password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" required />
@@ -16,14 +18,15 @@
 
 				<div class="pair">
 					<label for="confirm-password">Confirm Password:</label>
-					<input type="password" ng-model="confirmPassword" id="confirm-password" required />
+					<input type="password" ng-model="confirmPassword" id="confirm-password" oninput="checkMatching(this)" required />
 				</div>
 
-				<div id="buttons">
-					<input type="button" id="cancel" class="button" ng-click="cancel()" value="Cancel" />
+				<!--<div id="buttons">-->
+					<!--<input type="button" id="cancel" class="button" ng-click="cancel()" value="Cancel" />-->
 					<input type="submit" id="change-password" class="button" value="Change Password"/>
-				</div>
+				<!--</div>-->
 			</form>
-		</md-dialog>
+			<!--</md-dialog>-->
+		</div>
 	</body>
 </html>

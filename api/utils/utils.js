@@ -442,7 +442,7 @@ utils = {
         let message = `<div id="email-content"><h1 class="title">Password Reset</h1>` +
             `<div id="email-body"><p class="text">We received a request to reset your password, which can be accessed below.</p><br/>` +
             `<p class="text">If you didn't request this reset, you can disregard this message.</p></div>` +
-            `<a id="reset-link" href='${this.baseUrl}?p0=${jsBase64.encode(JSON.stringify(user), true)}'>Reset Password</a><hr/>` +
+            `<a id="reset-link" href="${this.baseUrl}?p0=${jsBase64.encode(JSON.stringify(user), true)}">Reset Password</a><hr/>` +
             `<p>AGIT</p></div>`;
 
         let email = this.mailOptions;

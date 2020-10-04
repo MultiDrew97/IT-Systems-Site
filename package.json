@@ -16,5 +16,8 @@
     "xml2json": "latest",
     "xmlhttprequest": "latest",
     "nodemailer": "latest"
+  },
+  "devDependencies": {
+    "ejs": "^3.1.5"
   }
 }

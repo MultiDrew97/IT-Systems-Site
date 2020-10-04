@@ -57,6 +57,10 @@ app.use(logger('tiny', {
     stream: logStream
 }));
 
+app.engine('html', require('ejs').renderFile)
+app.set('view engine', 'html');
+app.set('views', `${__dirname}/public/views`);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -99,7 +103,9 @@ app.put('/api/users/login', (req, res) => {
         let password = auth.split(':')[1];
 
         if (utils.checkAuth(username, password)) {
-            utils.changePassword(req.query.p0, jsBase64.decode(req.body.newPassword));
+            console.log({'Recieved': jsBase64.decode(req.body.password)});
+            res.sendStatus(200);
+            /*utils.changePassword(req.body.username, jsBase64.decode(req.body.password));*/
         } else {
             res.status(401);
             res.send();
@@ -108,6 +114,15 @@ app.put('/api/users/login', (req, res) => {
         res.status(401);
         res.send();
     }
+})
+
+app.get('/login/reset', (req, res) => {
+    let info = JSON.parse(jsBase64.decode(req.query.p0));
+    res.status(200).render('forgot.html');
+})
+
+app.get('/login/reset/success', (req, res) => {
+    res.status(200).render('success.html');
 })
 
 app.get('/api/users/reset', (req, res) => {
@@ -361,12 +376,6 @@ app.put('/api/servers/timer', (req, res) => {
 /*
     Password Reset Link Handles
  */
-
-app.get('/login/reset', (req, res) => {
-    let info = req.query;
-    console.log(JSON.parse(jsBase64.decode(req.query.p0)));
-    res.sendStatus(200);
-})
 
 let timer = new Timer(function() {
     utils.checkServers();

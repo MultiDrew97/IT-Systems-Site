@@ -1,4 +1,4 @@
-angular.module('ForgotCtrl', []).controller('ForgotController', function($mdDialog, $scope, $crypto) {
+angular.module('ForgotCtrl', []).controller('ForgotController', function($mdDialog, $scope, $routeParams, $crypto) {
     $scope.changePassword = function() {
         if ($scope.newPassword === $scope.confirmPassword) {
             // TODO: Implement the actual changing of the password
@@ -8,6 +8,8 @@ angular.module('ForgotCtrl', []).controller('ForgotController', function($mdDial
             alert('Passwords did not match');
         }
     }
+
+    console.log($routeParams);
 
     $scope.cancel = function() {
         $mdDialog.hide();

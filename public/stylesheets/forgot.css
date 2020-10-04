@@ -1,4 +1,4 @@
-.forgot-popup {
+/*.forgot-popup {
     max-width: 80%;
     min-width: 30%;
     width: auto;
@@ -6,6 +6,10 @@
     min-height: 40%;
     height: auto;
     padding: 2%;
+}*/
+body {
+    font-size: 1.1rem;
+    font-family: Arial Helvetica sans-serif;
 }
 
 .pair {
@@ -19,17 +23,25 @@
 
 #change {
     border: #f1f1f1 3px solid;
-    padding: 10%;
+    padding: 1%;
     display: inline-flex;
     flex-flow: column wrap;
-    margin-top: 5%;
+    max-width: 100%;
+    min-width: 30%;
+    width: auto;
+    position: sticky;
+    left: 35%;
+    margin: 10%;
 }
 
 #change-password {
     white-space: normal;
-    min-width: 40%;
-    max-width: 50%;
+    min-width: 50%;
+    max-width: 100%;
     width: auto;
+    padding: 5%;
+    font-size: 1rem;
+    align-self: center;
 }
 
 #buttons {
@@ -53,4 +65,12 @@
     max-width: 100%;
     min-width: 60%;
     width: auto;
+    font-size: 1.5rem;
+}
+
+html {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
 }
