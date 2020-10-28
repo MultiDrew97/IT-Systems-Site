@@ -20,7 +20,7 @@ angular.module('LoginCtrl', []).controller('LoginController', function($scope, $
         $login.login(loginEncoded).then(succ => {
             let length = 1;
 
-            if (succ.data.valid) {
+            if (succ.status === 200) {
                 alert('Login Successful');
 
                 if ($scope.keepSignedIn) {
@@ -39,17 +39,16 @@ angular.module('LoginCtrl', []).controller('LoginController', function($scope, $
                 alert('Login Failed');
             }
         }, err => {
-            alert(err);
+            console.log(err);
         });
     }
 
-    $scope.forgotPassword = function(ev) {
+    $scope.forgotPassword = function() {
         $mdDialog.show({
-            controller: 'ForgotController',
-            templateUrl: 'views/forgot.html',
+            controller: 'RequestController',
+            templateUrl: 'views/forgotEmail.html',
             parent: angular.element(document.body),
-            targetEvent: ev,
-            clickOutsideToClose: false
+            clickOutsideToClose: true
         });
     }
 })

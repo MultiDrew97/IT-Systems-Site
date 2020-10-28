@@ -49,6 +49,14 @@ angular.module('ServersServ', []).service('$server', function($http, $env, $cryp
                     authorization: `Basic ${apiAuth}`
                 }
             })
+        },
+        changeFrequency: function(frequency) {
+            return $http.put('/api/servers/timer', frequency,{
+                headers: {
+                    withCredentials: true,
+                    authorization: `Basic ${apiAuth}`
+                }
+            })
         }
     }
 })

@@ -73,8 +73,6 @@ angular.module('ManageCtrl', []).controller('ManageController', function($scope,
                 $cookies.put('option', radios[i].id, $env.cookieOptions(1));
             }
         }
-
-        console.log($cookies.get('option'));
     }
 
     $scope.addServer = function() {

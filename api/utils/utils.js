@@ -1,14 +1,23 @@
-const env = require('../../bin/environment');
+/*
+        Requires for the utilities program
+ */
+const env = require('../../bin/env');
 const fs = require('fs');
 const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+const crypto = require('crypto');
+const logs = new (require('./logger'))(env.log, env.error)
+
+/*
+    Global variables for the utilities program
+ */
 const backup1 = './api/data/data_1.json';
 const backup2 = './api/data/data_2.json';
 const nodemailer = require('nodemailer');
 const emailer = nodemailer.createTransport({
     service: 'outlook',
     auth: {
-        user: 'andrewr@austingastro.com',
-        pass: 'JasmineLove2499'
+        user: env.emailing.auth.username,
+        pass: env.emailing.auth.password
     }
 });
 const jsBase64 = require('js-base64');
@@ -16,13 +25,14 @@ const jsBase64 = require('js-base64');
 utils = {
     users: [],
     servers: [],
+    tokens: [],
     path: './api/data/data.json',
     lastChecked: Date,
     mailOptions: {
-        from: 'andrewr@austingastro.com',
-        subject: 'IT Systems Password Reset'
+        from: env.emailing.from,
+        subject: env.emailing.subject
     },
-    baseUrl: 'http://localhost:3000/login/reset',
+    baseUrl: 'http://localhost:3000/',
     loadData: function () {
         /*
             Load the data from the data file and store them in the servers and users arrays
@@ -35,7 +45,7 @@ utils = {
             this.checkServers();
         })
     },
-    checkAuth: function (username, password) {
+    checkAuth: function (auth) {
         /*
             Check the validation of the credentials given for API authorization
 
@@ -45,7 +55,7 @@ utils = {
             @return Whether the credentials are valid
          */
         for (let user = 0; user < env.apiAuth.length; user++) {
-            if (username === env.apiAuth[user].username && password === env.apiAuth[user].password) {
+            if (auth[0] === env.apiAuth[user].username && auth[1] === env.apiAuth[user].password) {
                 return true;
             }
         }
@@ -348,7 +358,7 @@ utils = {
             res.send();
         }
     },
-    ping: function (serverIndex) {
+    ping: function (server) {
         /*let MAX_ITERATIONS = 1;
         let TIME_PERIOD = 1000;
         let i = 0;*/
@@ -357,27 +367,48 @@ utils = {
 
         let ping = new XMLHttpRequest();
 
-        /*i++;
-        ping.seq = i;*/
+        ping.onreadystatechange = function() {
+            if (this.readyState === 4 && !TIMEOUT_ERROR) {
+                clearTimeout(timeout);
+                /*console.log(`${server.serverName} up`);*/
+                /*utils.servers[serverIndex].status = 'up';*/
+                server.status = 'up'
+                server.save((err) => {
+                    if (err) {
 
-        ping.date1 = Date.now();
-
-        ping.timeout = REQUEST_TIMEOUT;
-
-        ping.onreadystatechange = function () {
-            if (ping.readyState === 4 && !TIMEOUT_ERROR) {
-                utils.servers[serverIndex].status = 'up';
+                    }
+                })
             }
         }
 
-        ping.ontimeout = function () {
+        ping.ontimeout = function() {
             TIMEOUT_ERROR = true;
-            utils.servers[serverIndex].status = 'down';
+            /*console.log(`${server.serverName} down`);*/
+            server.status = 'down';
+            server.save((err) => {
+                if (err) {
+
+                }
+            })
         }
 
-        ping.open('HEAD', `https://${this.servers[serverIndex].dnsName}`, true);
+        /*ping.addEventListener('timeout', function () {
+            console.log('timed out');
+            TIMEOUT_ERROR = true;
+            /!*utils.servers[serverIndex].status = 'down';
+            console.log(`${server.serverName} down`);
+            server.status = 'down';*!/
+        })*/
+
+        /*ping.open('HEAD', `https://${this.servers[serverIndex].dnsName}`, true);*/
+        ping.open('HEAD', `http://${server.dnsName}`, true);
+        /*ping.timeout = REQUEST_TIMEOUT;*/
         ping.send();
 
+        let timeout = setTimeout(function() {
+            ping.ontimeout();
+            ping.abort();
+        }, REQUEST_TIMEOUT)
         /*let ping_loop = setInterval(function () {
 
             if (i < MAX_ITERATIONS) {
@@ -409,25 +440,35 @@ utils = {
             }
         }, TIME_PERIOD);*/
     },
-    convertToMinutes: function(time) {
-        return time * 1000 * 60
+    convertTime: function(time, unit) {
+        if (unit === 'seconds'){
+            return time * 1000;
+        } else if (unit === 'minutes' || unit === 'minutes') {
+            return time * 60000;
+        } else if (unit === 'hours' || unit === 'hour') {
+            return time * 3600000;
+        } else if (unit === 'days' || unit === 'day') {
+            return time * 86400000;
+        } else if (unit === 'years' || unit === 'year') {
+            return time * 31536000000;
+        }
     },
-    checkServers: function() {
-        for (let i = 0; i < this.servers.length; i++) {
-            if (this.servers[i].status !== 'maintenance') {
-                this.ping(i);
+    checkServers: function(servers) {
+        for (let i = 0; i < servers.length; i++) {
+            if (servers[i].status !== 'maintenance') {
+                this.ping(servers[i]);
             }
         }
 
         // TODO: Decide how to send notification that there are servers down
 
         this.lastChecked = Date.now();
-        this.saveData(null, true);
+        /*this.saveData(null, true);*/
     },
-    changePassword: function(username, newPassword) {
+    changePassword: function(user) {
         for (let i = 0; i < this.users.length; i++) {
-            if (this.users[i].username === username) {
-                this.users[i].password = newPassword;
+            if (this.users[i].username === user.username) {
+                this.users[i].password = user.password;
             }
         }
     },
@@ -439,11 +480,11 @@ utils = {
         }
     },
     sendEmail: function(user) {
-        let message = `<div id="email-content"><h1 class="title">Password Reset</h1>` +
-            `<div id="email-body"><p class="text">We received a request to reset your password, which can be accessed below.</p><br/>` +
+        let message = `<!DOCTYPE html><html lang="en"><body><div id="email-content" style="display: inline-flex; flex-direction: column; margin-left: 30%"><h1 class="title" style="text-align: center;">Password Reset</h1>` +
+            `<div id="email-body" ><p class="text">We received a request to reset your password, which can be accessed below.</p><br/>` +
             `<p class="text">If you didn't request this reset, you can disregard this message.</p></div>` +
-            `<a id="reset-link" href="${this.baseUrl}?p0=${jsBase64.encode(JSON.stringify(user), true)}">Reset Password</a><hr/>` +
-            `<p>AGIT</p></div>`;
+            `<a style="text-align: center;" id="reset-link" href="${this.baseUrl}login/reset?p0=${jsBase64.encode(JSON.stringify(user), true)}&p1=${this.generateToken()}">Reset Password</a><hr/>` +
+            `<p>AGIT</p></div></body></html>`;
 
         let email = this.mailOptions;
         email.to = user.email;
@@ -454,6 +495,26 @@ utils = {
         return emailer.sendMail(email);
     },
     generateToken: function() {
+        // generate a token to be used for validation in the website in terms of resets and such
+        let generated = crypto.randomBytes(256);
+        this.tokens.push({token: generated.toString('hex'), valid: true, created: Date.now(), validTil: Date.now() + this.convertTime(10, 'minutes')})
+        return generated.toString('hex');
+    },
+    validToken: function(token) {
+        for(let i = 0; i < this.tokens.length; i++) {
+            if (this.tokens[i].token === token) {
+                if (this.tokens[i].valid) {
+                    if (Date.now() <= this.tokens[i].validTil) {
+                        this.tokens[i].valid = false;
+                        return true
+                    } else {
+                        this.tokens[i].valid = false;
+                    }
+                }
+            }
+        }
+
+        return false;
     }
 }
 module.exports = utils;

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>IT Systems Site</title>
+
+	<link rel="stylesheet" type="text/css" href="../stylesheets/forgotEmail.css" />
+</head>
+<body ng-controller="RequestController">
+	<md-dialog class="reset-popup">
+		<form id="reset" target="reset" ng-submit="sendReset()" enctype="application/x-www-form-urlencoded">
+			<md-input>
+				<label for="email">Email:</label>
+				<input type="email" ng-model="email" id="email" name="email" /></md-input>
+			<input type="submit" id="send-email" value="Send Email" />
+		</form>
+	</md-dialog>
+
+	<iframe title="reset" name="reset" style="display: none">
+	</iframe>
+</body>
+</html>

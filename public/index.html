@@ -28,6 +28,7 @@
 		<script src="./javascripts/controllers/ManageCtrl.js"></script>
 		<script src="./javascripts/controllers/FrequencyCtrl.js"></script>
 		<script src="./javascripts/controllers/ForgotCtrl.js"></script>
+		<script src="./javascripts/controllers/RequestCtrl.js"></script>
 
 		<!-- ANGULAR CUSTOM SERVICES -->
 		<script src="./javascripts/services/PingServ.js"></script>
@@ -40,12 +41,12 @@
 		<script src="./javascripts/app.js"></script>
 	</head>
 
-	<body ng-app="IT-Systems" ng-controller="MainController">
+	<body ng-app="IT-Systems" ng-controller="MainController" ng-init="window.localStorage.setItem('value', 'temp'); window.sessionStorage.setItem('value','temp')">
 		<header class="main-header" id="top">
 			<nav>
 				<a ng-href="/" id="home-link"><img src="./images/home_logo.png" alt="IT Systems Site"/></a>
 				<a ng-href="/servers" id="server" class="nav-link">Servers</a>
-				<a ng-href="/contact" id="contact" class="nav-link">Contact Us</a>
+				<a ng-href="/servers/manage" id="contact" class="nav-link" ng-if="creds">Manage Servers</a>
 				<a id="login-link" class="nav-link" href="#" ng-click="popup(event)">Login</a>
 			</nav>
 		</header>
@@ -58,6 +59,12 @@
 
 		<div id="bottom">
 			<section id="help-statement">
+				<!--
+					TODO: Determine if to keep this way or to open a new tab to outlook and have them email us that way
+						Since the built in mail doesn't allow our outlook sign in, this might have to change.
+
+						Doesn't seem possible to do this on initial searching. This most likely will need to change in the final product
+						-->
 				<p>Systems checking out and still having issues? <a href="mailto:agit@austingastro.com?body=Location:%0d%0aPhone%20Number:%0d%0aIT#%20of%20computer(s):%0d%0aContents%20of%20error%20message(s):" id="ticket">Submit a Ticket</a></p>
 			</section>
 

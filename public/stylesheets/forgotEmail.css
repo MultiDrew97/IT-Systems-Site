@@ -1,0 +1,24 @@
+.reset-popup {
+    width: auto;
+    max-width: 50%;
+    min-width: 20%;
+    height: auto;
+    max-height: 50%;
+    min-height: 20%;
+    padding: 3%;
+}
+
+#reset {
+    display: inline-flex;
+    flex-flow: column wrap;
+}
+
+md-input {
+    display: inline-flex;
+    flex-direction: column;
+    margin-bottom: 5%;
+}
+
+/*
+    TODO: Further clean up the forgotEmail page with the css
+ */

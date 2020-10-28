@@ -7,7 +7,7 @@ nav {
 
 #login-link {
     position: relative;
-    left: 70%;
+    left: 80%;
 }
 
 #bottom-of-page {
@@ -42,4 +42,9 @@ body {
     border: black 2px solid;
     border-radius: 50%;
     padding: 0.3%;
+}
+
+.nav-link {
+    display: block;
+    padding: 0.5rem 1.5rem;
 }

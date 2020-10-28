@@ -3,16 +3,15 @@ angular.module('FrequencyCtrl', []).controller('FrequencyController', function($
 
     $server.getFrequency().then(res => {
         $scope.frequency = res.data.interval;
-        console.log($scope.frequency);
     })
 
 
     $scope.changeFrequency = function() {
-        alert($scope.frequency);
-        /*$server.changeFrequency($scope.frequency).then(() => {
+        /*alert($scope.frequency);*/
+        $server.changeFrequency({interval: $scope.frequency}).then(() => {
             $mdDialog.hide();
         }, fail => {
             console.log(fail);
-        })*/
+        })
     }
 })

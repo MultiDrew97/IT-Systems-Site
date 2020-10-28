@@ -7,9 +7,9 @@
         <link rel="stylesheet" href="../stylesheets/servers.css">
     </head>
     <body ng-controller="ServersController">
-        <div id="server-controls">
+        <!--<div id="server-controls">
             <a ng-href="/servers/manage" class="hidden manage-servers">Manage</a>
-        </div>
+        </div>-->
 
         <table id="server-table">
             <thead>
@@ -30,7 +30,7 @@
         </table>
 
         <footer>
-            <p id="last-checked">{{ lastChecked | date : 'short' : 'CST' }}</p>
+            <p id="last-checked">{{ lastChecked | date : 'short' : checkTiming() ? 'CST' : 'CDST'}}</p>
         </footer>
     </body>
 </html>

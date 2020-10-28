@@ -7,7 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="../stylesheets/forgot.css" />
 		<script src="../javascripts/forgot.js"></script>
 	</head>
-	<body ng-controller="ForgotController" onload="loadPage()">
+	<body onload="loadPage()">
 		<!--<md-dialog class="forgot-popup">-->
 		<div id="update">
 			<form id="change" action="#" onsubmit="changePassword(event)">
@@ -27,6 +27,11 @@
 				<!--</div>-->
 			</form>
 			<!--</md-dialog>-->
+		</div>
+
+		<div id="invalid">
+			<h1>Expired Link</h1>
+			<h3>This link appears to have expired. You can <a id="resend" href="javascript:window.open(`/api/users/reset?email=${ps.body.email}`)">Request another</a></h3>
 		</div>
 	</body>
 </html>

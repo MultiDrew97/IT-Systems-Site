@@ -10,6 +10,7 @@
 		<md-dialog class="frequency-popup">
 			<form id="change-frequency" ng-submit="changeFrequency()">
 				<select id="frequencies" ng-model="frequency">
+					<option value="">---Select a Frequency---</option>
 					<option value="0" ng-selected="frequency === 0">Stop Checks</option>
 					<option value="0.5" ng-selected="frequency === 0.5">30 seconds</option>
 					<option value="1" ng-selected="frequency === 1">1 minute</option>

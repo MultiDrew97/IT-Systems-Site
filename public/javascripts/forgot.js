@@ -1,4 +1,4 @@
-let body;
+let ps = {};
 const api = `${btoa('admin:password')}`
 let newPassword;
 let confirmPassword;
@@ -10,7 +10,8 @@ function getUrlParams() {
         params[key] = value;
     })
 
-    body = JSON.parse(atob(params['p0']));
+    ps.body = JSON.parse(atob(params['p0']));
+    ps.token = params['p1'];
 }
 
 function changePassword(e) {
@@ -18,7 +19,9 @@ function changePassword(e) {
     console.log('Submitting Form');
     if (newPassword.checkValidity()) {
         if (confirmPassword.checkValidity()) {
-            body.password = btoa(newPassword.value);
+            ps.body.password = btoa(newPassword.value);
+
+            console.log(ps.body);
 
             const xhr = new XMLHttpRequest();
             xhr.withCredentials = true;
@@ -61,7 +64,16 @@ function checkMatching(input) {
 
 function loadPage() {
     getUrlParams();
-    newPassword = document.querySelector('#new-password');
-    confirmPassword = document.querySelector('#confirm-password');
-    newPassword.focus();
+
+    console.log(ps.token);
+
+    if (validToken()) {
+        newPassword = document.querySelector('#new-password');
+        confirmPassword = document.querySelector('#confirm-password');
+        newPassword.focus();
+    } else {
+        document.querySelector('#reset').display = 'none';
+        document.querySelector('#invalid').display = 'block';
+    }
+
 }

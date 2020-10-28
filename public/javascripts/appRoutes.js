@@ -23,8 +23,7 @@ angular.module('appRoutes', [])
                     servers: function($server) {
                         return $server.get();
                     }
-                },
-                onSameUrlNavigation: 'reload'
+                }
             })
 
             // login page

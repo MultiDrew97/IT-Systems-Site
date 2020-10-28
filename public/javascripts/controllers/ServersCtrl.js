@@ -59,4 +59,9 @@ angular.module('ServersCtrl', []).controller('ServersController', function($scop
     $scope.loggedIn = function() {
         return $cookies.get('credentials') != undefined;
     }
+
+    $scope.checkTiming = function() {
+        // getMonth is 0 indexed like all other arrays
+        return (new Date(Date.now())).getMonth() >= 10 || (new Date(Date.now())).getMonth() <= 2;
+    }
 });

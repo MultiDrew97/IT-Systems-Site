@@ -22,8 +22,8 @@ angular.module('LoginServ', []).service('$login', function($crypto, $http, $env,
             $cookies.remove('credentials');
             $cookies.remove('remember');
         },
-        reset: (username, newPassword) => {
-            $http.put(`/api/users/login?p0=${username}`, {newPassword: newPassword}, {
+        reset: (email) => {
+            return $http.get(`/api/users/reset?p0=${email}`, {
                 headers: {
                     withCredentials: true,
                     authorization: `Basic ${apiAuth}`
