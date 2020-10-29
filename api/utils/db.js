@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const dbEnv = require('../../bin/env').db;
 const server = require('../../public/javascripts/models/server');
 const user = require('../../public/javascripts/models/user');
-const utils = require('./utils');
 
 class Database {
     constructor(options = {useNewUrlParser: true, useUnifiedTopology: true}) {

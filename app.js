@@ -10,7 +10,6 @@ const fs = require('fs');
 const utils = require('./api/utils/utils');
 const Timer = require('./api/utils/timer');
 const logs = new (require('./api/utils/logger'))();
-/*let log = new logClass('IT-Systems-Site-Console.log', 'IT-Systems-Site-Error.log');*/
 
 /*const bodyParser = require('body-parser');*/
 
@@ -103,7 +102,7 @@ app.get('/api/users/login', (req, res) => {
      */
 
     if (req.headers.authorization) {
-        let auth = (jsBase64.decode(req.headers.authorization.split(' ')[1])).split(':');
+        let auth = utils.getAuth(req.headers.authorization);
 
         if (utils.checkAuth(auth)) {
             let creds = jsBase64.decode(req.query.p0).split(':');
@@ -139,7 +138,7 @@ app.get('/api/users', (req, res) => {
         Retrieve the entire list of users
      */
     if (req.headers.authorization) {
-        let auth = (jsBase64.decode(req.headers.authorization.split(' ')[1])).split(':');
+        let auth = utils.getAuth(req.headers.authorization);
 
         if (utils.checkAuth(auth)) {
             db.getUsers().then(users => {
@@ -168,7 +167,7 @@ app.post('/api/users', (req, res) => {
         Create a new user if needed. Most likely will never be used, but is here already if needed
      */
     if (req.headers.authorization) {
-        let auth = (jsBase64.decode(req.headers.authorization.split(' ')[1])).split(':');
+        let auth = utils.getAuth(req.headers.authorization);
 
         if (utils.checkAuth(auth)) {
             db.addUser(req.body).then(() => {
@@ -189,7 +188,7 @@ app.post('/api/users', (req, res) => {
 
 app.delete('/api/users', (req, res) => {
     if (req.headers.authorization) {
-        let auth = (jsBase64.decode(req.headers.authorization.split(' ')[1])).split(':');
+        let auth = utils.getAuth(req.headers.authorization);
 
         if (utils.checkAuth(auth)) {
             db.deleteUser(req.body.user).then(() => {
@@ -214,7 +213,7 @@ app.delete('/api/users', (req, res) => {
 
 app.put('/api/users/login', (req, res) => {
     if (req.headers.authorization) {
-        let auth = (jsBase64.decode(req.headers.authorization.split(' ')[1])).split(':');
+        let auth = utils.getAuth(req.headers.authorization);
 
         if (utils.checkAuth(auth)) {
             logs.log('Received body to change password', JSON.stringify(req.body));
@@ -253,26 +252,24 @@ app.get('/login/reset/success', (req, res) => {
 
 app.get('/api/users/reset', (req, res) => {
     if (req.headers.authorization) {
-        let auth = (jsBase64.decode(req.headers.authorization.split(' ')[1])).split(':');
+        let auth = utils.getAuth(req.headers.authorization);
 
         if (utils.checkAuth(auth)) {
-            /*utils.reset(req.query.email).then((err, info) => {
-                if (err)
-                    res.sendStatus(400);
-
-                res.sendStatus(200);
-            });*/
             db.resetRequest(req.query.p0).then((user) => {
                 if (user) {
-                    utils.reset(user.email);
-                    logs.log(`Sent reset email to ${req.query.p0}`);
-                    res.sendStatus(200);
+                    utils.sendEmail(user).then(() => {
+                        logs.log(`Sent reset email to ${req.query.p0}`);
+                        res.sendStatus(200);
+                    }, reject => {
+                        logs.error('Failed to send email', reject);
+                        res.sendStatus(500);
+                    });
                 } else {
                     logs.log(`Could not find a user with email: ${req.query.p0}`);
                     res.sendStatus(404);
                 }
-            }, fail => {
-                logs.error('Failed to send reset email', fail)
+            }, reject => {
+                logs.error('Failed to query the database', reject)
                 res.sendStatus(500);
             })
         } else {
@@ -289,14 +286,14 @@ app.get('/api/users/reset', (req, res) => {
 
 app.get('/api/token/valid', (req, res) => {
     if (req.headers.authorization) {
-        let auth = (jsBase64.decode(req.headers.authorization.split(' ')[1])).split(':');
+        let auth = utils.getAuth(req.headers.authorization);
 
         if (utils.checkAuth(auth)) {
             if (utils.validToken(req.query.p0)) {
                 logs.log(`Token ${req.query.p0} was valid`);
                 res.sendStatus(200)
             } else {
-                logs.log(`Token ${req.query.p0} is invalid`);
+                logs.log(`Token ${req.query.p0} was invalid`);
                 res.sendStatus(401);
             }
         } else {
@@ -318,7 +315,7 @@ app.get('/api/servers', (req, res) => {
         Or specific information about a single server
      */
     if (req.headers.authorization) {
-        let auth = (jsBase64.decode(req.headers.authorization.split(' ')[1])).split(':');
+        let auth = utils.getAuth(req.headers.authorization);
 
         if (utils.checkAuth(auth)) {
             if (req.query.p0){
@@ -369,7 +366,7 @@ app.post('/api/servers', ((req, res) => {
      */
 
     if (req.headers.authorization) {
-        let auth = (jsBase64.decode(req.headers.authorization.split(' ')[1])).split(':');
+        let auth = utils.getAuth(req.headers.authorization);
 
         if (utils.checkAuth(auth)) {
             /*utils.addServer(req.body, res);*/
@@ -404,10 +401,9 @@ app.delete('/api/servers', (req, res) =>{
      */
 
     if (req.headers.authorization) {
-        let auth = (jsBase64.decode(req.headers.authorization.split(' ')[1])).split(':');
+        let auth = utils.getAuth(req.headers.authorization);
 
         if (utils.checkAuth(auth)) {
-            /*utils.deleteServer(req.query.p0, res);*/
             db.deleteServer(req.query.p0).then(()=> {
                 logs.log(`Removed server from database with IP: ${req.query.p0}`);
                 res.sendStatus(200);

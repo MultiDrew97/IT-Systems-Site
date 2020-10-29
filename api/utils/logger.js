@@ -9,8 +9,8 @@ class Logger {
             /*
                 Try to create the write streams for both logs
              */
-            logs.console = fs.createWriteStream(`./${env.logs.log}`, {flags: 'a'});
-            logs.error = fs.createWriteStream(`./${env.logs.error}`, {flags: 'a'});
+            logs.console = fs.createWriteStream(`./logs/${env.logs.log}`, {flags: 'a'});
+            logs.error = fs.createWriteStream(`./logs/${env.logs.error}`, {flags: 'a'});
         } catch (ex) {
             /*
                 An error occured when trying to create the write streams for one or both of the logs
