@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="af88b6d9-ca3b-40f2-889f-2d743a2b1e45" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Management-Page" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/public/javascripts/services/EnvServ.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/app.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/public/javascripts/app.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/public/javascripts/appRoutes.js" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="JsBowerSettings">
+    <node-interpreter value="project" />
+    <bower-package value="$PROJECT_DIR$/node_modules/bower" />
+    <bower.json value="$PROJECT_DIR$/bower.json" />
+  </component>
+  <component name="ProjectId" id="1gb50lacMzkx1VyTHo0HwPTUh71" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="12.18.3" />
+    <property name="javascript.nodejs.core.library.typings.version" value="12.12.54" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/views" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/logs" />
+      <recent name="$PROJECT_DIR$/public/images" />
+      <recent name="$PROJECT_DIR$/public" />
+      <recent name="$PROJECT_DIR$/public/libs" />
+      <recent name="$PROJECT_DIR$/api/utils" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/views" />
+      <recent name="$PROJECT_DIR$/public/libs/bootstrap" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="af88b6d9-ca3b-40f2-889f-2d743a2b1e45" name="Default Changelist" comment="" />
+      <created>1598370231198</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1598370231198</updated>
+      <workItem from="1598370232296" duration="10439000" />
+      <workItem from="1598391627565" duration="258000" />
+      <workItem from="1598391889387" duration="39963000" />
+      <workItem from="1598894004654" duration="2847000" />
+      <workItem from="1598896859536" duration="85671000" />
+      <workItem from="1600205791556" duration="388000" />
+      <workItem from="1600207086280" duration="675000" />
+      <workItem from="1600563479608" duration="42168000" />
+      <workItem from="1600958065160" duration="45083000" />
+      <workItem from="1601566699667" duration="16798000" />
+      <workItem from="1601850398211" duration="56144000" />
+      <workItem from="1603917325028" duration="4950000" />
+      <workItem from="1603984198878" duration="2767000" />
+      <workItem from="1604355088911" duration="997000" />
+    </task>
+    <task id="LOCAL-00001" summary="Found a simple pinging program that I can use in the time being until I figure out a better way to ping the servers">
+      <created>1598370727505</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1598370727506</updated>
+    </task>
+    <task id="LOCAL-00002" summary="I've created the XML file to store the data on each server. I want to be able to dynamically wait for the XML to be converted for when the file gets larger. Potentially make them read, convert and ping one at a time async.">
+      <created>1598385749856</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1598385749856</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Fine tuned the table load to not be as long as previously made. Also want to begin making the initial page look better">
+      <created>1598393225127</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1598393225127</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Created a service for the ping and xml converter. Also made a login page for the site. I just need to handle to login process and figure out how to change the site based on the login status">
+      <created>1598478032066</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1598478032066</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Had some straggling logic errors that I didn't catch prior to previous commit">
+      <created>1598478157379</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1598478157379</updated>
+    </task>
+    <task id="LOCAL-00006" summary="I've created the login service and expanded the XML converter service to incorporate conversion of the users xml file. Just have to figure out how to write to the xml file to update information. Either I need to update the existing version or I need to overwrite it and save it that way">
+      <created>1598565786046</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1598565786046</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Change everything to be that the API backend will handle the login and server queries">
+      <created>1598731246507</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1598731246507</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Implemented some additions to the login page and functionality. Made it to where the login page will take you to the server management page after logging in. Also created some helper services that will be used for things like logging in and server list manipulation. Next step is to handle the management page itself.">
+      <created>1599061651107</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1599061651107</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Started to work on the management page for the site.&#10;&#10;I have to ensure that the user who is accessing this page, has the correct credentials when accessing it.">
+      <created>1600785068917</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1600785068917</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Started to work on the management page for the site.&#10;&#10;I have to ensure that the user who is accessing this page, has the correct credentials when accessing it.">
+      <created>1600785359890</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1600785359890</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Started to work on the management page for the site.&#10;&#10;I have to ensure that the user who is accessing this page, has the correct credentials when accessing it.">
+      <created>1600785443436</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1600785443436</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Started to work on the management page for the site.&#10;&#10;I have to ensure that the user who is accessing this page, has the correct credentials when accessing it.">
+      <created>1600785819577</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1600785819577</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Started to work on the management page for the site.&#10;&#10;I have to ensure that the user who is accessing this page, has the correct credentials when accessing it.">
+      <created>1600786904663</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1600786904663</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Started to work on the management page for the site.&#10;&#10;I have to ensure that the user who is accessing this page, has the correct credentials when accessing it.">
+      <created>1600811624919</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1600811624919</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Created and started to style the server management page.&#10;&#10;I need to ensure that only those with the correct credentials will be able to access this page.">
+      <created>1600893285485</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1600893285485</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Added the ability to refresh the page on any page that isn't the main page.&#10;&#10;Next step is to add functionality for changing the check frequency of the servers">
+      <created>1601327769518</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1601327769518</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Added funtionality to reset a password if forgotten.&#10;&#10;Also added emailing functionality for this behaviour.&#10;&#10;Next step is to figure out how to server the forgot.html page when the link is clicked, then figure out how to limit the amount of time the email will remain active">
+      <created>1601416717045</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1601416717045</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Began working on the password reset functionality">
+      <created>1601850226598</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1601850226598</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Created a logger class to enable to logging of functions in the &quot;API&quot; for the website. Also to log the error's that occur with in the application. Also created the html and styling for the forgot password feature for us to use">
+      <created>1603922873435</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1603922873435</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Fine tuning the utils module to get rid of the legacy data storage functions. Also added a function to get the authorization from the header with less clutter">
+      <created>1603985394987</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1603985394987</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Fine tuning the utils module to get rid of the legacy data storage functions. Also added a function to get the authorization from the header with less clutter">
+      <created>1603986741120</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1603986741120</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Fine tuning the utils module to get rid of the legacy data storage functions. Also added a function to get the authorization from the header with less clutter">
+      <created>1603987318466</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1603987318466</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Fine tuning the utils module to get rid of the legacy data storage functions. Also added a function to get the authorization from the header with less clutter">
+      <created>1603987574336</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1603987574336</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Fine tuning the utils module to get rid of the legacy data storage functions. Also added a function to get the authorization from the header with less clutter">
+      <created>1604355178805</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1604355178805</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Found a simple pinging program that I can use in the time being until I figure out a better way to ping the servers" />
+    <MESSAGE value="I've created the XML file to store the data on each server. I want to be able to dynamically wait for the XML to be converted for when the file gets larger. Potentially make them read, convert and ping one at a time async." />
+    <MESSAGE value="Fine tuned the table load to not be as long as previously made. Also want to begin making the initial page look better" />
+    <MESSAGE value="Created a service for the ping and xml converter. Also made a login page for the site. I just need to handle to login process and figure out how to change the site based on the login status" />
+    <MESSAGE value="Had some straggling logic errors that I didn't catch prior to previous commit" />
+    <MESSAGE value="I've created the login service and expanded the XML converter service to incorporate conversion of the users xml file. Just have to figure out how to write to the xml file to update information. Either I need to update the existing version or I need to overwrite it and save it that way" />
+    <MESSAGE value="Change everything to be that the API backend will handle the login and server queries" />
+    <MESSAGE value="Implemented some additions to the login page and functionality. Made it to where the login page will take you to the server management page after logging in. Also created some helper services that will be used for things like logging in and server list manipulation. Next step is to handle the management page itself." />
+    <MESSAGE value="Started to work on the management page for the site.&#10;&#10;I have to ensure that the user who is accessing this page, has the correct credentials when accessing it." />
+    <MESSAGE value="Created and started to style the server management page.&#10;&#10;I need to ensure that only those with the correct credentials will be able to access this page." />
+    <MESSAGE value="Added the ability to refresh the page on any page that isn't the main page.&#10;&#10;Next step is to add functionality for changing the check frequency of the servers" />
+    <MESSAGE value="Added funtionality to reset a password if forgotten.&#10;&#10;Also added emailing functionality for this behaviour.&#10;&#10;Next step is to figure out how to server the forgot.html page when the link is clicked, then figure out how to limit the amount of time the email will remain active" />
+    <MESSAGE value="Began working on the password reset functionality" />
+    <MESSAGE value="Created a logger class to enable to logging of functions in the &quot;API&quot; for the website. Also to log the error's that occur with in the application. Also created the html and styling for the forgot password feature for us to use" />
+    <MESSAGE value="Fine tuning the utils module to get rid of the legacy data storage functions. Also added a function to get the authorization from the header with less clutter" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fine tuning the utils module to get rid of the legacy data storage functions. Also added a function to get the authorization from the header with less clutter" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="511" y="0" width="901" height="900" key="#HTML" timestamp="1600719213656">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="511" y="0" width="901" height="900" key="#HTML/0.0.1440.900@0.0.1440.900" timestamp="1600719213656" />
+    <state x="354" y="135" key="#Inspections" timestamp="1598463672598">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="354" y="135" key="#Inspections/0.0.1440.900@0.0.1440.900" timestamp="1598463672598" />
+    <state x="184" y="112" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598370561136">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="184" y="112" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1598370561136" />
+    <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1603987445972">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1603987445972" />
+    <state width="902" height="466" key="DebuggerActiveHint" timestamp="1603921718350">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="902" height="466" key="DebuggerActiveHint/0.0.1440.900@0.0.1440.900" timestamp="1603921718350" />
+    <state x="375" y="169" key="FileDocumentManager.FileCacheConflict" timestamp="1599144538861">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="375" y="169" key="FileDocumentManager.FileCacheConflict/0.0.1440.900@0.0.1440.900" timestamp="1599144538861" />
+    <state width="1419" height="246" key="GridCell.Tab.0.bottom" timestamp="1604017536826">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="246" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1604017536826" />
+    <state width="1419" height="304" key="GridCell.Tab.0.bottom/0.23.1440.798@0.23.1440.798" timestamp="1598731254889" />
+    <state width="1419" height="283" key="GridCell.Tab.0.bottom/0.23.1440.804@0.23.1440.804" timestamp="1601565089446" />
+    <state width="1419" height="246" key="GridCell.Tab.0.center" timestamp="1604017536823">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="246" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1604017536823" />
+    <state width="1419" height="304" key="GridCell.Tab.0.center/0.23.1440.798@0.23.1440.798" timestamp="1598731254888" />
+    <state width="1419" height="283" key="GridCell.Tab.0.center/0.23.1440.804@0.23.1440.804" timestamp="1601565089445" />
+    <state width="1419" height="246" key="GridCell.Tab.0.left" timestamp="1604017536822">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="246" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1604017536822" />
+    <state width="1419" height="304" key="GridCell.Tab.0.left/0.23.1440.798@0.23.1440.798" timestamp="1598731254888" />
+    <state width="1419" height="283" key="GridCell.Tab.0.left/0.23.1440.804@0.23.1440.804" timestamp="1601565089444" />
+    <state width="1419" height="246" key="GridCell.Tab.0.right" timestamp="1604017536825">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="246" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1604017536825" />
+    <state width="1419" height="304" key="GridCell.Tab.0.right/0.23.1440.798@0.23.1440.798" timestamp="1598731254889" />
+    <state width="1419" height="283" key="GridCell.Tab.0.right/0.23.1440.804@0.23.1440.804" timestamp="1601565089446" />
+    <state width="1419" height="304" key="GridCell.Tab.1.bottom" timestamp="1603932273802">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="304" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1603932273802" />
+    <state width="1419" height="304" key="GridCell.Tab.1.bottom/0.23.1440.798@0.23.1440.798" timestamp="1598731254890" />
+    <state width="1419" height="304" key="GridCell.Tab.1.bottom/0.23.1440.801@0.23.1440.801" timestamp="1598899191396" />
+    <state width="1419" height="304" key="GridCell.Tab.1.bottom/0.23.1440.804@0.23.1440.804" timestamp="1603922181327" />
+    <state width="1419" height="304" key="GridCell.Tab.1.center" timestamp="1603932273800">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="304" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1603932273800" />
+    <state width="1419" height="304" key="GridCell.Tab.1.center/0.23.1440.798@0.23.1440.798" timestamp="1598731254889" />
+    <state width="1419" height="304" key="GridCell.Tab.1.center/0.23.1440.801@0.23.1440.801" timestamp="1598899191394" />
+    <state width="1419" height="304" key="GridCell.Tab.1.center/0.23.1440.804@0.23.1440.804" timestamp="1603922181325" />
+    <state width="1419" height="304" key="GridCell.Tab.1.left" timestamp="1603932273800">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="304" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1603932273800" />
+    <state width="1419" height="304" key="GridCell.Tab.1.left/0.23.1440.798@0.23.1440.798" timestamp="1598731254889" />
+    <state width="1419" height="304" key="GridCell.Tab.1.left/0.23.1440.801@0.23.1440.801" timestamp="1598899191394" />
+    <state width="1419" height="304" key="GridCell.Tab.1.left/0.23.1440.804@0.23.1440.804" timestamp="1603922181324" />
+    <state width="1419" height="304" key="GridCell.Tab.1.right" timestamp="1603932273801">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="304" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1603932273801" />
+    <state width="1419" height="304" key="GridCell.Tab.1.right/0.23.1440.798@0.23.1440.798" timestamp="1598731254889" />
+    <state width="1419" height="304" key="GridCell.Tab.1.right/0.23.1440.801@0.23.1440.801" timestamp="1598899191395" />
+    <state width="1419" height="304" key="GridCell.Tab.1.right/0.23.1440.804@0.23.1440.804" timestamp="1603922181326" />
+    <state width="1419" height="304" key="GridCell.Tab.2.bottom" timestamp="1603932273808">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="304" key="GridCell.Tab.2.bottom/0.0.1440.900@0.0.1440.900" timestamp="1603932273808" />
+    <state width="1419" height="304" key="GridCell.Tab.2.bottom/0.23.1440.798@0.23.1440.798" timestamp="1598731254891" />
+    <state width="1419" height="304" key="GridCell.Tab.2.center" timestamp="1603932273803">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="304" key="GridCell.Tab.2.center/0.0.1440.900@0.0.1440.900" timestamp="1603932273803" />
+    <state width="1419" height="304" key="GridCell.Tab.2.center/0.23.1440.798@0.23.1440.798" timestamp="1598731254890" />
+    <state width="1419" height="304" key="GridCell.Tab.2.left" timestamp="1603932273802">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="304" key="GridCell.Tab.2.left/0.0.1440.900@0.0.1440.900" timestamp="1603932273802" />
+    <state width="1419" height="304" key="GridCell.Tab.2.left/0.23.1440.798@0.23.1440.798" timestamp="1598731254890" />
+    <state width="1419" height="304" key="GridCell.Tab.2.right" timestamp="1603932273805">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="304" key="GridCell.Tab.2.right/0.0.1440.900@0.0.1440.900" timestamp="1603932273805" />
+    <state width="1419" height="304" key="GridCell.Tab.2.right/0.23.1440.798@0.23.1440.798" timestamp="1598731254890" />
+    <state width="1419" height="304" key="GridCell.Tab.3.bottom" timestamp="1603932273810">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="304" key="GridCell.Tab.3.bottom/0.0.1440.900@0.0.1440.900" timestamp="1603932273810" />
+    <state width="1419" height="304" key="GridCell.Tab.3.bottom/0.23.1440.798@0.23.1440.798" timestamp="1598731254892" />
+    <state width="1419" height="304" key="GridCell.Tab.3.center" timestamp="1603932273809">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="304" key="GridCell.Tab.3.center/0.0.1440.900@0.0.1440.900" timestamp="1603932273809" />
+    <state width="1419" height="304" key="GridCell.Tab.3.center/0.23.1440.798@0.23.1440.798" timestamp="1598731254891" />
+    <state width="1419" height="304" key="GridCell.Tab.3.left" timestamp="1603932273808">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="304" key="GridCell.Tab.3.left/0.0.1440.900@0.0.1440.900" timestamp="1603932273808" />
+    <state width="1419" height="304" key="GridCell.Tab.3.left/0.23.1440.798@0.23.1440.798" timestamp="1598731254891" />
+    <state width="1419" height="304" key="GridCell.Tab.3.right" timestamp="1603932273809">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="304" key="GridCell.Tab.3.right/0.0.1440.900@0.0.1440.900" timestamp="1603932273809" />
+    <state width="1419" height="304" key="GridCell.Tab.3.right/0.23.1440.798@0.23.1440.798" timestamp="1598731254892" />
+    <state x="320" y="177" key="Vcs.Push.Dialog.v2" timestamp="1604355381002">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="320" y="177" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1604355381002" />
+    <state x="518" y="371" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604355422355">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="518" y="371" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900@0.0.1440.900" timestamp="1604355422355" />
+    <state x="385" y="196" width="670" height="158" key="search.everywhere.popup" timestamp="1603480292472">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="196" width="670" height="158" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1603480292472" />
+  </component>
+</project>
