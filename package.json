@@ -18,6 +18,6 @@
     "nodemailer": "latest"
   },
   "devDependencies": {
-    "ejs": "^3.1.5"
+    "ejs": "^3.1.7"
   }
 }
